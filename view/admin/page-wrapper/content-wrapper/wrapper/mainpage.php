@@ -7,3 +7,9 @@
 
 //Ghi chú: Bắt buộc sẽ phải xóa dòng này khi đến cuối môn.
 ?>
+
+<!-- Bắt đầu vào trang chính -->
+
+
+
+<!-- /.container-fluid -->

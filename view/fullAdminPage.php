@@ -4,18 +4,15 @@
 <html lang="en">
 <?php
 include("admin/head.php");
-
 ?>
 <body id="page-top">
 
+<div class="wrapper">
 <?php 
 include("admin/page-wrapper.php");
-include("admin/hidden.php");
-
-
 ?>
-
-
+</div>
+<?php include("admin/hidden.php");?>
 
 </body>
 </html>
