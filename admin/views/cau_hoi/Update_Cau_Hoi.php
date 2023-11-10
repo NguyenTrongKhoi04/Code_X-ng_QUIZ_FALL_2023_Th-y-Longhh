@@ -250,7 +250,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Update Chuyên đề </h1>
+                    <h1 class="h3 mb-2 text-gray-800">Thêm Câu Hỏi</h1>
                     
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -268,22 +268,26 @@
                                    <tbody>                
                                        <form action="">
                                            <tr>
-                                               <td>Tên Chuyên Đề</td>
+                                               <td>Nội Dung Câu Hỏi</td>
                                                <td><input type="text"></td> 
                                                 
                                            </tr>
                                            <tr>
-                                               <td>Bộ Câu Hỏi</td>
+                                               <td>Hình Ảnh</td>
                                                <td><input type="text"></td>                                                  
                                            </tr>
                                            <tr>
-                                               <td>Bộ Đáp Án</td>
-                                               <td><input type="text"></td>                                                 
+                                               <td>Chuyên Đề</td>
+                                               <td><select name="" id="">
+                                                <option value="">Chuyên đề A</option>
+                                                <option value="">Chuyên đề B</option>
+                                                <option value="">Chuyên đề C</option>
+                                               </select></td>                                                 
                                            </tr>                                               
                                            
                                            <tr>
                                                <td>
-                                                   <input type="button" value="Update">
+                                                   <input type="button" value="Thêm">
                                                </td>
                                            </tr>
                                        </form>                           
