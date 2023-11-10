@@ -7,16 +7,23 @@ require_once "Connection.php";
  * @param array $args mảng giá trị cung cấp cho các tham số của $sql
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_execute($sql){
-    $sql_args = array_slice(func_get_args(), 1);
+function pdo_Execute($sql){
+    /**
+     * array slice: Cắt thành 1 mảng mới
+     * func_get_args(): gộp các tham số được truyền thành mảng 
+     */
+    $sql_Args = array_slice(func_get_args(), 1);
+    var_dump($sql_Args);
     try{
-        $conn = pdo_get_connection();
+        $conn = pdo_Get_Connection();
         $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
+        $stmt->execute($sql_Args);
     }
     catch(PDOException $e){
         throw $e;
+        die();
     }
+    // giải phóng dữ liêu
     finally{
         unset($conn);
     }
@@ -24,10 +31,10 @@ function pdo_execute($sql){
 /*
  * Lấy ID của obj mới được INSERT
  */
-function pdo_execute_return_LastinsertID($sql){
+function pdo_Execute_Return_LastinsertID($sql){
     $sql_args = array_slice(func_get_args(), 1);
     try{
-        $conn = pdo_get_connection();
+        $conn = pdo_Get_Connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         return $conn->lastInsertId();
@@ -46,22 +53,24 @@ function pdo_execute_return_LastinsertID($sql){
  * @return array mảng các bản ghi
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query($sql){
-    $sql_args = array_slice(func_get_args(), 1);
+function query_All($sql){
+    $sql_Args = array_slice(func_get_args(), 1);
     try{
-        $conn = pdo_get_connection();
+        $conn = pdo_Get_Connection();
         $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $rows = $stmt->fetchAll();
-        return $rows;
+        $stmt->execute($sql_Args);
+        $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $arr;
     }
     catch(PDOException $e){
         throw $e;
+        die();
     }
     finally{
         unset($conn);
     }
 }
+
 /**
  * Thực thi câu lệnh sql truy vấn một bản ghi
  * @param string $sql câu lệnh sql
@@ -69,22 +78,25 @@ function pdo_query($sql){
  * @return array mảng chứa bản ghi
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_one($sql){
-    $sql_args = array_slice(func_get_args(), 1);
+function query_One($sql){
+    $sql_Args = array_slice(func_get_args(), 1);
+
     try{
-        $conn = pdo_get_connection();
+        $conn = pdo_Get_Connection();
         $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row;
+        $stmt->execute($sql_Args);
+        $arr = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $arr;
     }
     catch(PDOException $e){
         throw $e;
+        die();
     }
     finally{
         unset($conn);
     }
 }
+
 /**
  * Thực thi câu lệnh sql truy vấn một giá trị
  * @param string $sql câu lệnh sql
@@ -92,7 +104,7 @@ function pdo_query_one($sql){
  * @return giá trị
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_value($sql){
+function pdo_Query_Value($sql){
     $sql_args = array_slice(func_get_args(), 1);
     try{
         $conn = pdo_get_connection();
