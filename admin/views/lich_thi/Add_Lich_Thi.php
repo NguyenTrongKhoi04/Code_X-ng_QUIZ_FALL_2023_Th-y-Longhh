@@ -250,7 +250,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Update Chuyên đề </h1>
+                    <h1 class="h3 mb-2 text-gray-800">Thêm Lịch Thi</h1>
                     
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -266,27 +266,35 @@
                 
                                                         
                                    <tbody>                
-                                       <form action="">
-                                           <tr>
-                                               <td>Tên Chuyên Đề</td>
-                                               <td><input type="text"></td> 
-                                                
-                                           </tr>
-                                           <tr>
-                                               <td>Bộ Câu Hỏi</td>
-                                               <td><input type="text"></td>                                                  
-                                           </tr>
-                                           <tr>
-                                               <td>Bộ Đáp Án</td>
-                                               <td><input type="text"></td>                                                 
-                                           </tr>                                               
-                                           
-                                           <tr>
-                                               <td>
-                                                   <input type="button" value="Update">
-                                               </td>
-                                           </tr>
-                                       </form>                           
+                                   <form action="">
+                                            <tr>
+                                                <th>Thời Gian Bắt Đầu</th>
+
+                                                <td><input type="text"></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th>Thời Gian Kết Thúc</th>
+
+                                                <td><input type="text"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Thời Gian Thi</th>
+
+                                                <td><input type="file"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Số Lượng Đề Thi</th>
+
+                                                <td><input type="text"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <input type="button" value="Thêm">
+                                                </td>
+                                            </tr>
+                                        </form>                    
                                    </tbody>
                                </table>
                         </div>

@@ -250,7 +250,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Update Chuyên đề </h1>
+                    <h1 class="h3 mb-2 text-gray-800">Khảo Thí Điểm</h1>
                     
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -268,16 +268,16 @@
                                    <tbody>                
                                        <form action="">
                                            <tr>
-                                               <td>Tên Chuyên Đề</td>
+                                               <td>Người Thi</td>
                                                <td><input type="text"></td> 
                                                 
                                            </tr>
                                            <tr>
-                                               <td>Bộ Câu Hỏi</td>
+                                               <td>Đề Thi</td>
                                                <td><input type="text"></td>                                                  
                                            </tr>
                                            <tr>
-                                               <td>Bộ Đáp Án</td>
+                                               <td>Điểm</td>
                                                <td><input type="text"></td>                                                 
                                            </tr>                                               
                                            
