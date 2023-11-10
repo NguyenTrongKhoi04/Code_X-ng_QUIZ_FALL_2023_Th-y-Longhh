@@ -73,6 +73,9 @@
                 <a class="collapse-item" href="<?=$adminAction?>NganHangDapAn">danh sách đáp án</a>
                 <a class="collapse-item" href="<?=$adminAction?>AddDapAn">Thêm đáp an</a>
 
+                <h6 class="collapse-header">Ngân hàng đề thi</h6>
+                <a class="collapse-item" href="<?=$adminAction?>ListDeThi">Danh sách đề thi</a>
+                <a class="collapse-item" href="<?=$adminAction?>AddDeThi">Thêm đề thi</a>
             </div>
         </div>
     </li>
@@ -80,12 +83,12 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>Đề Thi</span>
+            <span>Lịch Thi</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="utilities-animation.html">Danh sách đề thi</a>
-                <a class="collapse-item" href="utilities-other.html">Thêm đề thi</a>
+                <a class="collapse-item" href="<?=$adminAction?>ListLichThi">Danh sách lịch thi</a>
+                <a class="collapse-item" href="<?=$adminAction?>AddLichThi">Thêm lịch thi</a>
             </div>
         </div>
     </li>

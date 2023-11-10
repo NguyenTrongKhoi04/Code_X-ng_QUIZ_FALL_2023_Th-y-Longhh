@@ -9,14 +9,15 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
     $act = $_GET['act'];
     switch ($act) {
+
             /**
-             * ====================================================================================
-             *                                 TÀI KHOẢN
-             * ====================================================================================
-             */
+         * ====================================================================================
+         *                                 TÀI KHOẢN
+         * ====================================================================================
+         */
         case 'dangnhap':
             check_Login();
-            if ($_SESSION['user']['vaiTro'] == 0) {
+            if ($_SESSION['user']['vaiTro'] == 1) {
                 header('location: AdminController.php');
             } else
                 include_once 'views/diem/List_Diem.php';
@@ -56,7 +57,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include_once 'views/cau_hoi/Update_Cau_Hoi.php';
             break;
 
-              /**
+            /**
              * ====================================================================================
              *                                 ĐÁP ÁN                   
              * ====================================================================================
@@ -81,6 +82,33 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
         case 'KhaoThi':
             include_once 'views/diem/Khao_Thi.php';
+            break;  
+
+            /**
+             * ====================================================================================
+             *                                  LỊCH THI
+             * ====================================================================================
+             */
+        case 'ListLichThi':
+            include_once 'views/lich_thi/List_lich_thi.php';
+            break;
+        case 'AddLichThi':
+            include_once 'views/lich_thi/Add_Lich_Thi.php';
+            break;
+        case 'UpdateLichThi': //update những lịch thi chưa xảy ra
+            include_once 'views/lich_thi/Update_Lich_Thi.php';
+            break;
+
+            /**
+             * ====================================================================================
+             *                                   ĐỀ THI
+             * ====================================================================================
+             */
+        case 'ListDeThi':
+            include_once 'views/de_thi/List_De_Thi.php';
+            break;
+        case 'AddDeThi':
+            include_once 'views/de_thi/Add_De_Thi.php';
             break;
         default:
             include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php';
