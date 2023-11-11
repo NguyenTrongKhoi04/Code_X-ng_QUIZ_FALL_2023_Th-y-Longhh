@@ -80,7 +80,6 @@ function query_All($sql){
  */
 function query_One($sql){
     $sql_Args = array_slice(func_get_args(), 1);
-
     try{
         $conn = pdo_Get_Connection();
         $stmt = $conn->prepare($sql);

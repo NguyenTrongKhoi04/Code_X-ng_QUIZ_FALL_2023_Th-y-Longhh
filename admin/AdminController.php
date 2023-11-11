@@ -26,7 +26,13 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             session_destroy();
             header("Location: AdminController.php");
             break;
+        case 'AddAccount':
 
+            break;
+        case 'ListAccount':
+            break;
+        case 'UpdateAccount':
+            break;
             /**
              * ====================================================================================
              *                                 CHUYÊN ĐỀ                   
@@ -82,7 +88,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
         case 'KhaoThi':
             include_once 'views/diem/Khao_Thi.php';
-            break;  
+            break;
 
             /**
              * ====================================================================================

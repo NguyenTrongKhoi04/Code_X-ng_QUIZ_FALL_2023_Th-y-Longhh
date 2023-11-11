@@ -107,10 +107,11 @@ function check_Login(){
         $tk = $_POST['tk'];
         $mk = ($_POST['mk']);//md5
         $arrCheck = select_One('nguoidung',null," tenDangNhap = '$tk' AND matKhau = '$mk'");
-        
         if(is_array($arrCheck)){
             $_SESSION['user']=$arrCheck;
             unset($tk,$mk);
+        }else{
+            header('location:../assets/global/Login.php');
         }
     }
 }
