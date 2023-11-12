@@ -257,33 +257,28 @@
                         <div class="card-body">
                             <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                   
                                    <tr>
                                            <th></th>
                                            <th>Thông tin</th>
                                            <th></th>
                                    </tr>
-                
-                                                        
                                    <tbody>                
-                                       <form action="">
+                                       <form method="POST">
                                            <tr>
                                                <td>Tên Chuyên Đề</td>
-                                               <td><input type="text"></td> 
-                                                
+                                               <td><input type="text" name="tenChuyenDe"></td> 
                                            </tr>
                                            <tr>
                                                <td>Bộ Câu Hỏi</td>
-                                               <td><input type="text"></td>                                                  
+                                               <td><input type="text" name="boCauHoi"></td>                                                  
                                            </tr>
                                            <tr>
                                                <td>Bộ Đáp Án</td>
-                                               <td><input type="text"></td>                                                 
+                                               <td><input type="text" name="boDapAn"></td>                                                 
                                            </tr>                                               
-                                           
                                            <tr>
                                                <td>
-                                                   <input type="button" value="Thêm">
+                                                   <button type="submit" name="addChuyenDe">Gửi thông tin đến server</button>
                                                </td>
                                            </tr>
                                        </form>                           
