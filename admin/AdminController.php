@@ -11,31 +11,43 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
     switch ($act) {
 
         // Phần xử lý đăng nhập
-        case 'dangnhap':// Gán session khi đăng nhập thành công
-            check_Login();
-            if ($_SESSION['user']['vaiTro'] == 1) {
-                header('location: AdminController.php');
-            } else
-                include_once 'views/diem/List_Diem.php';
-            break;
+        // case 'dangnhap':
+        //     check_Login();
+        //     if ($_SESSION['user']['vaiTro'] == 1) {
+        //         header('location: AdminController.php');
+        //     } else
+        //         include_once 'views/diem/List_Diem.php';
+        //     break;
+        // Tôi cần một cái comment hướng dẫn debug cho cái này
+        // Không hiểu lắm, vì lỗi liên tục session, không thể set được
 
-        case 'dangxuat':// Sử dụng session destroy để hủy session, đăng xuất tài khoản
+        case 'dangxuat':
             session_destroy();
             header("Location: AdminController.php");
             break;
 
         // Phần xử lý chuyên đề
-        case 'NganHangChuyenDe':
+        case 'ViewChuyenDe':
             include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php'; // Điều hướng đến trang tổng hợp chuyên đề (Read)
             // Xử lý bảng ở dưới đây
+            
             break;
         case 'AddChuyenDe':
             include_once 'views/chuyen_de/Add_Chuyen_De.php'; // Điều hướng đén trang thêm chuyên đề mới (Create)
             // Xử lý form ở dưới đây
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["addChuyenDe"])) {
+                $tenChuyenDe = $_POST["tenChuyenDe"];
+                $boCauHoi = $_POST["boCauHoi"];
+                $boDapAn = $_POST["boDapAn"];
+                insertChuyenDe($tenChuyenDe, $boCauHoi, $boDapAn);
+                // INSERT INTO `chuyende`(`tenChuyenDe`, `boCauHoi`, `boDapAn`) VALUES (?, ?, ?)
+                // Sẽ set up server-side validation sau. Hoặc dẹp bà nó luôn
+            }
             break;
         case 'UpdateChuyenDe':// 
             include_once 'views/chuyen_de/Update_Chuyen_De.php'; //Xử lý phần cập nhật chuyên đề (Update)
             // Xử lý form ở dưới đây
+
             break;
 
         // Phần xử lý câu hỏi (Chưa động đến)
