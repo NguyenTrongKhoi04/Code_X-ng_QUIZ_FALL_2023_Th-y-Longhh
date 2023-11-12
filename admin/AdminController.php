@@ -185,3 +185,4 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php';
     }
 }
+
