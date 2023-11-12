@@ -19,6 +19,9 @@
  *      =>> "SELECT * FROM bang1 ORDER BY id DESC , ten , loai DESC "
  */
  function select_All($tenBang,$tenCot=null,$limit=null,$params=null,$desc=null){
+    if($tenCot==null){
+        $tenCot =' * ';
+    }
     $sql ='SELECT '.$tenCot.' FROM '.$tenBang;
 
     //Kiểm tra tham sô truyền vào. Nếu 
@@ -76,8 +79,9 @@
         $sql .=" LIMIT ".$limit." ";
     }
     }
-
-    $sql .= join('',$arrList);
+    if(isset($arrList)){
+        $sql .= join('',$arrList);
+    }
     // var_dump($sql);
     return query_All($sql);
 };
@@ -97,6 +101,8 @@ function select_One($tenBang,$tenCot=null,$where,$limit=null){
     }
 
     $account=query_One($sql);
+    // var_dump($sql);
+    // var_dump($account);
     return $account;
 }
 
