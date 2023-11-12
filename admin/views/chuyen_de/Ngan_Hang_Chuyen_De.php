@@ -256,12 +256,36 @@
                                             <td>1</td>
                                             <td>2</td>
                                             <td>
-                                                <a href="<?=$adminAction?>UpdateChuyenDe">
-                                                    <input type="button" value="Sửa">
-                                                </a>
-                                                <a href="">
-                                                    <input type="button" value="Xóa">
-                                                </a>
+                                            <a href="<?=$adminAction?>UpdateChuyenDe">
+                                                <input type="button" value="Sửa"> 
+                                            </a>
+                                            <a href="">
+                                                <input type="button" value="Xóa">
+                                            </a>
+                                            </td>
+                                        </tr>
+
+                                    <?php 
+                                    include "../../../assets/global/Admin.php";
+
+                                    $allChuyenDe = getAllChuyenDe();
+                                    foreach ($allChuyenDe as $row) {
+                                        echo "<tr>";
+                                        echo "<td>"
+                                    }
+                                    ?>
+                                        <tr>
+                                            <td></td>
+                                            <td>Toán</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>
+                                            <a href="<?=$adminAction?>UpdateChuyenDe">
+                                                <input type="button" value="Sửa"> 
+                                            </a>
+                                            <a href="">
+                                                <input type="button" value="Xóa">
+                                            </a>
                                             </td>
                                         </tr>
 
