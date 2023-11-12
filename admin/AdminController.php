@@ -10,43 +10,47 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
 
-            /**
-         * ====================================================================================
-         *                                 TÀI KHOẢN
-         * ====================================================================================
-         */
-        case 'dangnhap':
-            check_Login();
-            if ($_SESSION['user']['vaiTro'] == 1) {
-                header('location: AdminController.php');
-            } else
-                include_once 'views/diem/List_Diem.php';
-            break;
+        // Phần xử lý đăng nhập
+        // case 'dangnhap':
+        //     check_Login();
+        //     if ($_SESSION['user']['vaiTro'] == 1) {
+        //         header('location: AdminController.php');
+        //     } else
+        //         include_once 'views/diem/List_Diem.php';
+        //     break;
+        // Tôi cần một cái comment hướng dẫn debug cho cái này
+        // Không hiểu lắm, vì lỗi liên tục session, không thể set được
+
         case 'dangxuat':
             session_destroy();
             header("Location: AdminController.php");
             break;
 
-            /**
-             * ====================================================================================
-             *                                 CHUYÊN ĐỀ                   
-             * ====================================================================================
-             */
-        case 'NganHangChuyenDe':
-            include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php';
+        // Phần xử lý chuyên đề
+        case 'ViewChuyenDe':
+            include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php'; // Điều hướng đến trang tổng hợp chuyên đề (Read)
+            // Xử lý bảng ở dưới đây
+            
             break;
         case 'AddChuyenDe':
-            include_once 'views/chuyen_de/Add_Chuyen_De.php';
+            include_once 'views/chuyen_de/Add_Chuyen_De.php'; // Điều hướng đén trang thêm chuyên đề mới (Create)
+            // Xử lý form ở dưới đây
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["addChuyenDe"])) {
+                $tenChuyenDe = $_POST["tenChuyenDe"];
+                $boCauHoi = $_POST["boCauHoi"];
+                $boDapAn = $_POST["boDapAn"];
+                insertChuyenDe($tenChuyenDe, $boCauHoi, $boDapAn);
+                // INSERT INTO `chuyende`(`tenChuyenDe`, `boCauHoi`, `boDapAn`) VALUES (?, ?, ?)
+                // Sẽ set up server-side validation sau. Hoặc dẹp bà nó luôn
+            }
             break;
-        case 'UpdateChuyenDe':
-            include_once 'views/chuyen_de/Update_Chuyen_De.php';
+        case 'UpdateChuyenDe':// 
+            include_once 'views/chuyen_de/Update_Chuyen_De.php'; //Xử lý phần cập nhật chuyên đề (Update)
+            // Xử lý form ở dưới đây
+
             break;
 
-            /**
-             * ====================================================================================
-             *                                 CÂU HỎI                   
-             * ====================================================================================
-             */
+        // Phần xử lý câu hỏi (Chưa động đến)
         case 'NganHangCauHoi':
             include_once 'views/cau_hoi/Ngan_Hang_Cau_Hoi.php';
             break;
@@ -57,11 +61,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include_once 'views/cau_hoi/Update_Cau_Hoi.php';
             break;
 
-            /**
-             * ====================================================================================
-             *                                 ĐÁP ÁN                   
-             * ====================================================================================
-             */
+
+        // Phần xử lý đáp án (Chưa động đến)
         case 'NganHangDapAn':
             include_once 'views/dap_an/Ngan_Hang_Dap_An.php';
             break;
@@ -72,11 +73,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include_once 'views/dap_an/Update_Dap_An.php';
             break;
 
-            /**
-             * ====================================================================================
-             *                                  ĐIỂM
-             * ====================================================================================
-             */
+        // Phần xử lí kết quả sau kỳ thi (Chưa động đến)
         case 'ListDiem':
             include_once 'views/diem/List_Diem.php';
             break;
@@ -84,11 +81,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include_once 'views/diem/Khao_Thi.php';
             break;  
 
-            /**
-             * ====================================================================================
-             *                                  LỊCH THI
-             * ====================================================================================
-             */
+
+        // Phần xử lí lịch thi (Chưa động đến)
         case 'ListLichThi':
             include_once 'views/lich_thi/List_lich_thi.php';
             break;
@@ -99,11 +93,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include_once 'views/lich_thi/Update_Lich_Thi.php';
             break;
 
-            /**
-             * ====================================================================================
-             *                                   ĐỀ THI
-             * ====================================================================================
-             */
+
+        // Phần xử lý lịch thi (Chưa động đến)
         case 'ListDeThi':
             include_once 'views/de_thi/List_De_Thi.php';
             break;

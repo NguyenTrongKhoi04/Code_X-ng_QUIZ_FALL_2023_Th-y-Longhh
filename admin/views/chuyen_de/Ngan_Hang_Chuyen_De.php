@@ -256,12 +256,39 @@
                                             <td>1</td>
                                             <td>2</td>
                                             <td>
-                                                <a href="<?=$adminAction?>UpdateChuyenDe">
-                                                    <input type="button" value="Sửa">
-                                                </a>
-                                                <a href="">
-                                                    <input type="button" value="Xóa">
-                                                </a>
+                                            <a href="<?=$adminAction?>UpdateChuyenDe">
+                                                <input type="button" value="Sửa"> 
+                                            </a>
+                                            <a href="">
+                                                <input type="button" value="Xóa">
+                                            </a>
+                                            </td>
+                                        </tr>
+
+                                    <?php 
+                                    include "../../../assets/global/Admin.php";
+
+                                    $allChuyenDe = getAllChuyenDe();
+                                    foreach ($allChuyenDe as $row) {
+                                        echo "<tr>";
+                                        echo "<td> {$row['id']} </td>";
+                                        echo "<td> {$row['tenChuyenDe']} </td>";
+                                        echo "<td> {$row['boCauHoi']} </td>";
+                                        echo "<td> {$row['boDapAn']} </td>";
+                                    };
+                                    ?>
+                                        <tr>
+                                            <td></td>
+                                            <td>Toán</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>
+                                            <a href="<?=$adminAction?>UpdateChuyenDe">
+                                                <input type="button" value="Sửa"> 
+                                            </a>
+                                            <a href="">
+                                                <input type="button" value="Xóa">
+                                            </a>
                                             </td>
                                         </tr>
 
