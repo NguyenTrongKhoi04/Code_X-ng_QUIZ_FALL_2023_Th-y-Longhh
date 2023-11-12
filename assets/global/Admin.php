@@ -18,10 +18,41 @@
  * Ví dụ:  $b = Select_All('bang1','*',null,'_id_ten_loai_','_1_3_');
  *      =>> "SELECT * FROM bang1 ORDER BY id DESC , ten , loai DESC "
  */
- function select_All($tenBang,$tenCot=null,$limit=null,$params=null,$desc=null){
+
+function insertChuyenDe($tenChuyenDe, $boCauHoi, $boDapAn) {
+    $sql = "INSERT INTO `chuyende`(`tenChuyenDe`, `boCauHoi`, `boDapAn`) VALUES (?, ?, ?)";
+    pdo_Execute($sql, $tenChuyenDe, $boCauHoi, $boDapAn);
+    //Sử dụng dấu hỏi vì đã đặt theo thứ tự có sẵn.
+    //Tăng cường bảo mật hơn
+}
+
+function updateChuyenDe($id, $tenChuyenDe, $boCauHoi, $boDapAn) {
+    $sql = "UPDATE chuyende SET id = ?, tenChuyenDe = ?, boCauHoi = ?, boDapAn = ? WHERE id = ?";
+    pdo_Execute($sql, $id, $tenChuyenDe, $boCauHoi, $boDapAn);
+}
+
+function deleteChuyenDe($id) {
+    $sql = "DELETE FROM `chuyende` WHERE `chuyende`.`id` = ?  ";
+    pdo_Execute($sql, $id);
+}
+
+function getAllChuyenDe() {
+    $sql = "SELECT * FROM ChuyenDe";
+    return query_All($sql);
+}
+
+function getOneChuyenDe() {
+    $sql = "SELECT * FROM ChuyenDe WHERE ID = ?";
+    return query_One($sql);
+}
+
+//Ghi chú cho bảng này để làm gì. Bên trên chưa đủ để giải thích.
+//Debug thì tự ông để riêng, để chung nên để tối giản lại.
+//Còn nếu ông dùng chung thì ít nhất nên để demo, vì mỗi người hiểu một kiểu khác nhau.
+function select_All($tenBang,$tenCot=null,$limit=null,$params=null,$desc=null){
     $sql ='SELECT '.$tenCot.' FROM '.$tenBang;
 
-    //Kiểm tra tham sô truyền vào. Nếu 
+    //Kiểm tra tham sô truyền vào. Nếu (?)
     $arrCheck =[$tenBang,$tenCot];
     foreach($arrCheck as $var=>$value){
         if (!is_string($value)){
