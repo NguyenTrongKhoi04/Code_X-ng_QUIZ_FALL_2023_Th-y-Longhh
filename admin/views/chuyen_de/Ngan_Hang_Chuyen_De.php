@@ -271,8 +271,11 @@
                                     $allChuyenDe = getAllChuyenDe();
                                     foreach ($allChuyenDe as $row) {
                                         echo "<tr>";
-                                        echo "<td>"
-                                    }
+                                        echo "<td> {$row['id']} </td>";
+                                        echo "<td> {$row['tenChuyenDe']} </td>";
+                                        echo "<td> {$row['boCauHoi']} </td>";
+                                        echo "<td> {$row['boDapAn']} </td>";
+                                    };
                                     ?>
                                         <tr>
                                             <td></td>
