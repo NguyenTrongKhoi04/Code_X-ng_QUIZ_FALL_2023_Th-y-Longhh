@@ -266,24 +266,25 @@
                 
                                                         
                                    <tbody>                
-                                       <form action="">
+                                       <form method="post" action="?act=KhaoThi">
+                                       <input type="hidden" value="<?php echo $khaoThi['id']; ?>" name="idDiem">
                                            <tr>
-                                               <td>Người Thi</td>
-                                               <td><input type="text"></td> 
+                                               <td>Id Người Thi</td>
+                                               <td><input type="text" value="<?php echo $khaoThi['nguoiDungId'] ?>" disabled ></td> 
                                                 
                                            </tr>
                                            <tr>
                                                <td>Đề Thi</td>
-                                               <td><input type="text"></td>                                                  
+                                               <td><input type="text" value="<?php echo $khaoThi['deThiId'] ?>" disabled ></td>                                                  
                                            </tr>
                                            <tr>
                                                <td>Điểm</td>
-                                               <td><input type="text"></td>                                                 
+                                               <td><input type="number" value="<?php echo $khaoThi['diem'] ?>" name="diem" min="0" max="10" ></td>                                                 
                                            </tr>                                               
                                            
                                            <tr>
                                                <td>
-                                                   <input type="button" value="Update">
+                                               <button type="submit" class="btn btn-warning" name="btnsUpdate">Update</button>
                                                </td>
                                            </tr>
                                        </form>                           

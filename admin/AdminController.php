@@ -4,9 +4,13 @@ ob_start();
 include_once '../app/Pdo.php';
 include_once '../assets/global/Admin.php';
 include_once '../assets/global/Url_Path.php';
+include_once '../admin/models/Diem.php ';
+
+$dsDiem = danhSachDiemThi();
 
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
+    
     $act = $_GET['act'];
     switch ($act) {
 
@@ -21,11 +25,11 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         // Tôi cần một cái comment hướng dẫn debug cho cái này
         // Không hiểu lắm, vì lỗi liên tục session, không thể set được
 
-        case 'dangxuat':
+        case 'dangxuat':{
             session_destroy();
             header("Location: AdminController.php");
             break;
-
+        }
         // Phần xử lý chuyên đề
         case 'ViewChuyenDe':
             include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php'; // Điều hướng đến trang tổng hợp chuyên đề (Read)
@@ -75,9 +79,22 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         // Phần xử lí kết quả sau kỳ thi (Chưa động đến)
         case 'ListDiem':
+
+            $dsDiem = danhSachDiemThi();
             include_once 'views/diem/List_Diem.php';
             break;
         case 'KhaoThi':
+            if(isset($_GET['idDiem']) & $_GET['idDiem'] > 0){
+                $khaoThi = getone_khaoThi($_GET['idDiem']);
+            }
+            if(isset($_POST['btnsUpdate'])){
+                $idDiem = $_POST['idDiem'];
+                $diem = $_POST['diem'];
+                updateDiem($idDiem,$diem);
+                header('location: ?act=ListDiem');
+
+            }           
+            
             include_once 'views/diem/Khao_Thi.php';
             break;  
 

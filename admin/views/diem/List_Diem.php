@@ -233,11 +233,11 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">List Điểm Thi</h1>
 
-                    <!-- DataTales Example -->
+                    <!-- Đổ dữ liệu ra bảng  -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <!-- <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                        </div>
+                        </div> -->
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -251,17 +251,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <!-- Lấy dữ liệu từ bảng kết quả và in ra bảng  -->
+
+                                        <?php foreach ($dsDiem as $value ): ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Khôi</td>
-                                            <td>1</td>
-                                            <td>10</td>
+                                            <td><?php echo $value['id'] ?></td>
+                                            <td><?php echo $value['tenDangNhap'] ?></td>
+                                            <td><?php echo $value['deThiId'] ?></td>
+                                            <td><?php echo $value['diem'] ?></td>
                                             <td>
-                                                <a href="<?=$adminAction ?>KhaoThi"><input type="button" value="Khảo Thí"></a>
-                                                <input type="button" value="Hủy ">
+                                                <a href="?act=KhaoThi&idDiem=<?php echo $value['id']; ?> "class="btn btn-warning ">Khảo thí</a>
+                                                
+                                                <a class="btn btn-danger" 
+                                                onclick="return confirm('Bạn có muốn hủy không ?')" 
+                                                href="?act=HuyKhaoThi&idDiem=<?php echo $value['id']; ?>">Hủy</a>                                            
                                             </td>
                                         </tr>
 
+                                        <?php endforeach; ?>
+                                        
                                     </tbody>
                                 </table>
                             </div>
