@@ -26,10 +26,10 @@
 </head>
 
 <body id="page-top">
-<input type="file" multiple>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
-emmet
+
         <!-- Sidebar -->
         <?php include_once '../assets/global/MenuSideBar.php'; ?>
         <!-- End of Sidebar -->
@@ -250,53 +250,50 @@ emmet
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Thêm Lịch Thi</h1>
-                    
+                    <h1 class="h3 mb-2 text-gray-800">List Tài Khoản</h1>
+                  
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
+                    <?php if (isset($error)) : ?>
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary" style="color:red !important;"><?= $error ?></h6>
+                            </div>
+                        <?php endif ?>
                         <div class="card-body">
                             <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                   
-                                   <tr>
-                                           <th></th>
-                                           <th>Thông tin</th>
-                                           <th></th>
-                                   </tr>
-                
-                                                        
-                                   <tbody>                
-                                   <form action="">
-                                            <tr>
-                                                <th>Thời Gian Bắt Đầu</th>
-
-                                                <td><input type="text"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <th>Thời Gian Kết Thúc</th>
-
-                                                <td><input type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Thời Gian Thi</th>
-
-                                                <td><input type="file"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Số Lượng Đề Thi</th>
-
-                                                <td><input type="text"></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    <input type="button" value="Thêm">
-                                                </td>
-                                            </tr>
-                                        </form>                    
-                                   </tbody>
-                               </table>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Tên Đăng Nhập</th>
+                                            <th>Mật Khẩu</th>
+                                            <th>Ảnh Đại Diện</th>
+                                            <th>Email</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Vai Trò</th>
+                                            <th>Thao Tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody> 
+                                        <?php foreach($arrAccount as $i) : ?>
+                                        <tr>
+                                            <td><?= $i['id']?></td>
+                                            <td><?= $i['tenDangNhap']?></td>
+                                            <td><?= $i['matKhau']?></td>
+                                            <td><img src="<?= $adminImage.$i['anhDaiDien']?>" width="40%" alt=""></td>
+                                            <td><?= $i['email']?></td>
+                                            <td><?= $i['diaChi']?></td>
+                                            <td><?= $i['vaiTro']?></td>
+                                            <td>
+                                                <a href="<?=$adminAction?>UpdateAccount&id=<?=$i['id'] ?>"><input type="button" value="Sửa"></a>  
+                                                
+                                                <a href="<?=$adminAction?>DeleteAccount&id=<?=$i['id'] ?>"><input type="button" value="Xóa"></a>  
+                                            </td> 
+                                        </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 

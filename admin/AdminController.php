@@ -4,6 +4,7 @@ ob_start();
 include_once '../app/Pdo.php';
 include_once '../assets/global/Admin.php';
 include_once '../assets/global/Url_Path.php';
+include_once 'models/TaiKhoan.php';
 
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
@@ -25,12 +26,85 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             session_destroy();
             header("Location: AdminController.php");
             break;
+        case 'AddAccount':
+            if (isset($_POST['add'])) {
 
+<<<<<<< HEAD
         // Phần xử lý chuyên đề
         case 'ViewChuyenDe':
             include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php'; // Điều hướng đến trang tổng hợp chuyên đề (Read)
             // Xử lý bảng ở dưới đây
             
+=======
+                $arrCheckAccount = select_One('nguoidung', null, "tenDangNhap = '" . $_POST['tenDangNhap'] . "'");
+                if (is_array($arrCheckAccount)) {
+                    $error = 'Tài Khoản này đã tồn tại';
+                } else {
+                    extract($_POST);
+                    extract($_FILES);
+                    $select = $_POST['vaiTro'];
+
+                    $duoianh = pathinfo($anhDaiDien['name'], PATHINFO_EXTENSION);
+                    // var_dump($duoianh);
+                    if (($duoianh != 'png') && ($duoianh != 'jpg') && ($duoianh != 'jpeg')) {
+                        $error = 'Chọn đúng định dạng file ảnh';
+                    } else {
+                        $img = $anhDaiDien['name'];
+                        move_uploaded_file($anhDaiDien['tmp_name'], $adminImage . $img);
+                        $error = "Thêm thành công";
+                        insert_Account($tenDangNhap, $matKhau, $img, $email, $diaChi, $select);
+                    }
+                }
+            }
+            include_once 'views/tai_khoan/Add_Tai_Khoan.php';
+            break;
+        case 'ListAccount':
+            $error = $_GET['mes'] ?? '';
+            $arrAccount = select_All('nguoidung');
+            include_once 'views/tai_khoan/List_Tai_Khoan.php';
+            break;
+        case 'UpdateAccount':
+            $id = $_GET['id'];
+            $arrAccount = select_One('nguoidung', null, " id = '" . $id . "'");
+            if (isset($_POST['add'])) {
+                extract($_POST);
+                extract($_FILES);
+                $img = ($anhDaiDien['size'] != 0) ? $anhDaiDien['name'] : $arrAccount['anhDaiDien'];
+                
+                if ($img == $anhDaiDien['name']) {
+                    $duoianh = pathinfo($anhDaiDien['name'], PATHINFO_EXTENSION);
+                    if (($duoianh != 'png') && ($duoianh != 'jpg') && ($duoianh != 'jpeg')) {
+                        $error = 'Chọn đúng định dạng file ảnh';
+                    } else {
+                        move_uploaded_file($anhDaiDien['tmp_name'], $adminImage.$img);
+                        $select = $vaiTro ?? $arrAccount['vaiTro'];
+                        $error = "Update thành công";
+                        update_Accouut($id, $tenDangNhap, $matKhau, $img, $email, $diaChi, $select);
+                        header("Location:".$adminAction."ListAccount");
+                    }
+                }else{
+                        $select = $vaiTro ?? $arrAccount['vaiTro'];
+                        $error = "Update thành công";
+                        update_Accouut($id, $tenDangNhap, $matKhau, $img, $email, $diaChi, $select);
+                        header("Location:".$adminAction."ListAccount");
+                }
+            }
+            include_once 'views/tai_khoan/Update_Tai_Khoan.php';
+            break;
+        case 'DeleteAccount':
+            $id = $_GET['id'];
+            $mes = "Xóa thành công";
+            delete_Account($id);
+            header('location: AdminController.php?act=ListAccount&mes=' . $mes);
+            break;
+            /**
+             * ====================================================================================
+             *                                 CHUYÊN ĐỀ                   
+             * ====================================================================================
+             */
+        case 'NganHangChuyenDe':
+            include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php';
+>>>>>>> 6e17a91d20cb93c1c35fd152db3722604be9a9dc
             break;
         case 'AddChuyenDe':
             include_once 'views/chuyen_de/Add_Chuyen_De.php'; // Điều hướng đén trang thêm chuyên đề mới (Create)
@@ -79,7 +153,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
         case 'KhaoThi':
             include_once 'views/diem/Khao_Thi.php';
-            break;  
+            break;
 
 
         // Phần xử lí lịch thi (Chưa động đến)
@@ -112,3 +186,4 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php';
     }
 }
+
