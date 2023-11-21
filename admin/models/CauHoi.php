@@ -1,11 +1,23 @@
 <?php
-    // lấy các trường dữ liệu id, noiDung, hinhAnh của bảng cauhoi
-    // và JOIN vào bảng chuyende
-    // để lấy ra tên chuyên đề của bảng chuyende
+    /**
+     * lấy các trường dữ liệu id, noiDung, hinhAnh của bảng cauhoi 
+     * và JOIN vào bảng chuyende 
+     * để lấy ra tên chuyên đề của bảng chuyende
+     * từ 2 bảng đã JOIN ta LEFT JOIN vào bảng dap an
+     * để lấy ra số lượng id.da ra
+     * 
+     */
+
     function loadAll_CauHoi() {
-        $sql = "SELECT ch.id, ch.noiDung, ch.hinhAnh, cd.tenChuyenDe 
+        $sql = "SELECT  ch.id, 
+                        ch.noiDung, 
+                        ch.hinhAnh, 
+                        cd.tenChuyenDe, 
+                        COUNT(da.id) AS soDapAn
                 FROM cauhoi ch 
-                JOIN chuyende cd ON ch.chuyenDeId = cd.id 
+                JOIN chuyende cd ON ch.chuyenDeId = cd.id
+                LEFT JOIN dapan da ON ch.id = da.cauHoiId
+                GROUP BY ch.id, ch.noiDung, ch.hinhAnh, cd.tenChuyenDe
                 ORDER BY ch.id DESC";
         $result = query_All($sql);
         

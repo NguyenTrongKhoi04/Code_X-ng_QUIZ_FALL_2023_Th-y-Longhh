@@ -269,6 +269,7 @@
                                             <th>Nội Dung</th>
                                             <th>Hình Ảnh</th>
                                             <th>Chuyên Đề</th>
+                                            <th>Quản Lý Câu Hỏi</th>
                                             <th>Thao Tác</th>
                                         </tr>
                                     </thead>
@@ -276,11 +277,12 @@
                                         <?php foreach($dsch as $ch) : ?>
                                         <tr>
                                             <td><?= $ch['id']?></td>
-                                            <td><?= $ch['noiDung']?></td>
+                                            <td <?php if (isset($ch['soDapAn']) && $ch['soDapAn'] == 0) echo 'style="color: red;"'; ?>><?= $ch['noiDung']?></td>
                                             <td>
                                                 <img src="../assets/upload/<?= $ch['hinhAnh']?>" width="80" alt="">
                                             </td>
-                                            <td><?= $ch['tenChuyenDe']?></td>          
+                                            <td><?= $ch['tenChuyenDe']?></td>   
+                                            <td><a href="?act=QuanLyCauHoi&id=<?= $ch['id']?>"><input type="button" value="Quản lý"></a></td>       
                                             <td>
                                                 <a href="?act=EditCauHoi&id=<?= $ch['id']?>"><input type="button" value="Sửa"></a>  
                                                 <a onclick="return confirm('Bạn Có Muốn Xóa Không')" href="?act=DeleteCauHoi&id=<?= $ch['id']?>"><input type="button" value="Xóa"></a>

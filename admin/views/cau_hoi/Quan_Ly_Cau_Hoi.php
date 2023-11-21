@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template -->
     <link href="../assets/css/admin/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../assets/css/admin/sb-admin-2.min.css" rel="stylesheet">
@@ -51,11 +49,9 @@
                     </form>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -69,18 +65,14 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -93,15 +85,13 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -144,22 +134,19 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="<?= $adminImg ?>undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="<?= $adminImg ?>undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -170,8 +157,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="<?= $adminImg ?>undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="<?= $adminImg ?>undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -182,8 +168,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="<?= $adminImg ?>undraw_profile_3.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="<?= $adminImg ?>undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -194,8 +179,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -212,15 +196,12 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="<?= $adminImg ?>undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="<?= $adminImg ?>undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -250,120 +231,135 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Thêm Lịch Thi</h1>
-                    
+                    <h1 class="h3 mb-2 text-gray-800">Quản Lý Câu Hỏi</h1>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                   
-                                   <tr>
-                                           <th></th>
-                                           <th>Thông tin</th>
-                                           <th></th>
-                                   </tr>
-                
-                                                        
-                                   <tbody>                
-                                   <form action="?act=AddLichThi" method="POST">
-                                            <tr>
-                                                <th>Thời Gian Bắt Đầu</th>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 
-                                                <td><input type="datetime-local" name="thoiGianBatDau"></td>
+                                    <tr>
+                                        <th></th>
+                                        <th>Thông tin</th>
+                                        <th></th>
+                                    </tr>
 
-                                            </tr>
-                                            <tr>
-                                                <th>Thời Gian Kết Thúc</th>
 
-                                                <td><input type="datetime-local" name="thoiGianKetThuc"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Thời Gian Thi</th>
+                                    <tbody>
+                                        <form action="?act=laDapAnDung" method="post" enctype="multipart/form-data">
 
-                                                <td><input type="number" min="0" name="thoiGianThi"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Số Lượng Đề Thi</th>
+                                            <?php
+                                                $daHienThi = []; // Mảng để theo dõi câu hỏi đã hiển thị
 
-                                                <td><input type="number" min="0" name="soLuongDeThi"></td>
-                                            </tr>
+                                                foreach ($qlch as $ch) :
+                                                    // Kiểm tra xem câu hỏi đã được hiển thị chưa
+                                                    if (!in_array($ch['noiDung'], $daHienThi)) :
+                                                        $daHienThi[] = $ch['noiDung']; // Thêm câu hỏi vào mảng đã hiển thị
+                                            ?>
+                                                    <div>Câu hỏi: <?= $ch['noiDung'] ?></div> <br>
+                                                <?php endif ?>
+                                            <?php endforeach ?>
 
-                                            <tr>
-                                                <td>
-                                                    <input type="submit"  name="AddLichThi" value="Thêm">
-                                                    <a href="?act=ListLichThi">Danh sách </a>
-                                                </td>
-                                            </tr>
-                                        </form>                    
-                                   </tbody>
-                               </table>
+                                            <?php foreach ($qlch as $ch) { 
+                                
+                                            ?>
+                                                <div>
+                                                   
+                                                    <input type="checkbox" <?= ($ch['laDapAnDung'] === 1) ? 'checked': '' ?> name="dapAnDung[]" value='<?= $ch['dapAnId'] ?>' id="dapAn<?= $ch['dapAnId'] ?>">
+                                                    <label for="dapAn<?= $ch['dapAnId'] ?>"><?= $ch['noiDungDapAn'] ?></label>
+
+                                                </div>
+                                            <?php }?>
+
+                                            <?php
+                                                if(isset($qlch)) {
+                                                    foreach ($qlch as $ch) {
+                                                        extract($ch);
+                                                    }
+                                                }
+                                            ?>
+                                            
+
+                                            <input type="submit" name="chonDapAnDung" value="Gửi">
+                                            <div class="btn" onclick="hienAnInput()">Thêm Đáp Án</div>
+                                        </form>
+                                        <div id="themDapAnDiv" style="display: none;">
+                                        <form action="?act=ThemDapAnMoi&id=<?= $cauHoiId?>" method="post">
+                                            <input type="hidden" name="cauHoiId" value="<?= $cauHoiId ?>">
+                                            <input type="text" name="noiDung" id="noiDungInput">
+                                            <input type="submit" name="addDapAnQuanLyCauHoi" value="Thêm đáp án"> <br><br>
+                                        </form>
+                                            </div>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
                         </div>
                     </div>
-
-                </div>
-                <!-- /.container-fluid -->
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Main Content -->
+            <!-- End of Content Wrapper -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
             </div>
         </div>
-    </div>
 
-    
-    <!-- Bootstrap core JavaScript-->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="../assets/js/jquery.easing.min.js"></script>
-<!-- Custom scripts for all pages-->
-<script src="../assets/js/sb-admin-2.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="../assets/js/jquery.dataTables.min.js"></script>
-<script src="../assets/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="../assets/js/jquery.easing.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="../assets/js/sb-admin-2.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="../assets/js/datatables-demo.js"></script>
+        <!-- Page level plugins -->
+        <script src="../assets/js/jquery.dataTables.min.js"></script>
+        <script src="../assets/js/dataTables.bootstrap4.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="../assets/js/datatables-demo.js"></script>
+        <script src="../assets/js//quanlydapan.js"></script>
 </body>
 
 </html>

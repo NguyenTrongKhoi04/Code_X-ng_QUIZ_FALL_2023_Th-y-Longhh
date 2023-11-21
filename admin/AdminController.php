@@ -7,7 +7,9 @@ include_once '../assets/global/Url_Path.php';
 include_once 'models/CauHoi.php';
 include_once 'models/ChuyenDe.php';
 include_once 'models/DapAn.php';
-include_once 'models/Dethi.php';
+include_once 'models/DeThi.php';
+include_once 'models/LichThi.php';
+include_once 'models/QuanLyCauHoi.php';
 
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
@@ -55,6 +57,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
              */
             case 'NganHangCauHoi':
                 $dsch = loadAll_CauHoi();
+                // $cauHoi = loadOne_CauHoiChuaDapAn();
+                // $cauHoi = loadOne_CauHoiChuaDapAn();
                 include_once 'views/cau_hoi/Ngan_Hang_Cau_Hoi.php';
                 break;
             case 'AddCauHoi':
@@ -102,6 +106,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                     update_CauHoi($id,$noiDung,$hinhAnh,$chuyenDeId);
                 }
                 $dsch = loadAll_CauHoi();
+                // $cauHoi = loadOne_CauHoiChuaDapAn();
                 include_once 'views/cau_hoi/Ngan_Hang_Cau_Hoi.php';
                 break;
             case 'DeleteCauHoi':
@@ -110,10 +115,46 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                     delete_CauHoi($id);
                 }
                 $dsch = loadAll_CauHoi();
+                // $cauHoi = loadOne_CauHoiChuaDapAn();
                 include_once 'views/cau_hoi/Ngan_Hang_Cau_Hoi.php';
                 break;
-            include_once 'views/cau_hoi/Update_Cau_Hoi.php';
-            break;
+            case 'QuanLyCauHoi':
+                if(isset($_GET['id']) && ($_GET['id'] > 0) ) {
+                    $cauHoiId = $_GET['id'];
+                    $qlch = loadAll_QuanLyCauHoi($cauHoiId);
+                }
+                include_once 'views/cau_hoi/Quan_Ly_Cau_Hoi.php';
+                break;
+            case 'laDapAnDung':
+                if(isset($_POST['chonDapAnDung']) && ($_POST['chonDapAnDung'])) {
+                    update_DapAnSai();
+                    $arrDapAnDung = $_POST['dapAnDung'];
+                    // var_dump($arrDapAnDung);
+                    // die;
+                    foreach($arrDapAnDung as $id_Correct) {
+                        select_DapAnDung($id_Correct);
+                    }
+                }
+                $dsch = loadAll_CauHoi();
+                include_once 'views/cau_hoi/Ngan_Hang_Cau_Hoi.php';
+                break;
+                case 'ThemDapAnMoi':
+                    if (isset($_POST['addDapAnQuanLyCauHoi']) && ($_POST['addDapAnQuanLyCauHoi'])) {
+                        $cauHoiId = $_POST['cauHoiId'];
+                        $noiDung = $_POST['noiDung'];
+                        if (empty($noiDung)) {
+                            echo "Vui lòng nhập nội dung đáp án.";
+                        } else {
+                            // Thêm đáp án mới vào cơ sở dữ liệu
+                            addDapAn_QuanLyCauHoi($cauHoiId, $noiDung);
+    
+                        }
+                    }
+                    
+                    $qlch = loadAll_QuanLyCauHoi($_GET['id']);
+                include_once 'views/cau_hoi/Quan_Ly_Cau_Hoi.php';
+                break;
+
 
             /**
              * ====================================================================================
@@ -159,6 +200,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             }
             
             $dsch = loadAll_CauHoi();
+            // $cauHoi = loadOne_CauHoiChuaDapAn();
             include_once 'views/dap_an/Add_Dap_An.php';
             break;
         case 'EditDapAn':
@@ -167,6 +209,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                $kq = loadOne_DapAn($id);
             }
             $dsch = loadAll_CauHoi();
+            // $cauHoi = loadOne_CauHoiChuaDapAn();
             include_once 'views/dap_an/Update_Dap_An.php';
             break;
         case 'UpdateDapAn':
@@ -215,15 +258,56 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
              * ====================================================================================
              */
         case 'ListLichThi':
+            $dslt = loadAll_Lichthi();
             include_once 'views/lich_thi/List_lich_thi.php';
             break;
         case 'AddLichThi':
+            if(isset($_POST['AddLichThi']) && $_POST['AddLichThi']) {
+                $thoiGianBatDau = $_POST['thoiGianBatDau'];
+                $thoiGianKetThuc = $_POST['thoiGianKetThuc'];
+                $thoiGianThi = $_POST['thoiGianThi'];
+                $soLuongDeThi = $_POST['soLuongDeThi'];
+            
+                if (!empty($thoiGianBatDau) && !empty($thoiGianKetThuc) && !empty($thoiGianThi) && !empty($soLuongDeThi)) {
+                    // Tất cả các trường đều không rỗng, tiến hành thêm vào cơ sở dữ liệu
+                    add_LichThi($thoiGianBatDau, $thoiGianKetThuc, $thoiGianThi, $soLuongDeThi);
+                    $thongBao = "<div style='color:green'>Thêm thành công</div>";
+                } else {
+                    // Có ít nhất một trường rỗng, xử lý theo ý của bạn (hiển thị thông báo lỗi, chẳng hạn)
+                    $thongBao = "<div style='color:red'>Vui lòng điền đầy đủ thông tin.</div>";
+                }
+            }
             include_once 'views/lich_thi/Add_Lich_Thi.php';
             break;
-        case 'UpdateLichThi': //update những lịch thi chưa xảy ra
+        case 'EditLichThi': //update những lịch thi chưa xảy ra
+            if(isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                $kq = loadOne_LichThi($id);
+            }
             include_once 'views/lich_thi/Update_Lich_Thi.php';
             break;
+        case 'UpdateLichThi':
+            if(isset($_POST['UpdateLichThi']) && ($_POST['UpdateLichThi'])) {
+                $id = $_POST['id'];
+                $thoiGianBatDau = $_POST['thoiGianBatDau'];
+                $thoiGianKetThuc = $_POST['thoiGianKetThuc'];
+                $thoiGianThi = $_POST['thoiGianThi'];
+                $soLuongDeThi = $_POST['soLuongDeThi'];
 
+                update_LichThi($id,$thoiGianBatDau,$thoiGianKetThuc,$thoiGianThi,$soLuongDeThi);
+            }
+            $dslt = loadAll_Lichthi();
+
+            include_once 'views/lich_thi/List_lich_thi.php';
+            break;
+        case 'DeleteLichThi':
+            if(isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                delete_LichThi($id);
+            }
+            $dslt = loadAll_Lichthi();
+            include_once 'views/lich_thi/List_lich_thi.php';
+            break;
             /**
              * ====================================================================================
              *                                   ĐỀ THI
