@@ -262,6 +262,9 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <td><a href="?act=AddDapAn"><input type="button" value="Thêm Đáp án"></a></td>
+                                        </tr>
+                                        <tr>
                                             <th>ID</th>
                                             <th>Câu Hỏi</th>
                                             <th>Nội Dung</th>
@@ -271,17 +274,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>  
+                                        <?php foreach($dsda as $da) : ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Khánh</td>
-                                            <td>khanh@gmail.com</td>
-                                            <td>Nam</td>
-                                            <td>khanh2004</td>         
+                                            <td><?= $da['id']?></td>
+                                            <td><?= $da['cauHoi']?></td>
+                                            <td><?= $da['noiDung']?></td>
                                             <td>
-                                                <a href="<?=$adminAction?>UpdateDapAn"><input type="button" value="Sửa"></a>  
-                                                <input type="button" value="Xóa">
+                                                <img src="../assets/upload/<?= $da['hinhAnh']?>" width="80" alt="">
+                                            </td>
+                                            <td><?= $da['laDapAnDung']?></td>
+                                            <td>
+                                                <a href="?act=EditDapAn&id=<?= $da['id']?>">
+                                                    <input type="button" value="Sửa">
+                                                </a>  
+                                                <a href="?act=DeletaDapAn&id=<?= $da['id']?>" onclick="return confirm('Bạn Có Muốn Xóa Không ?')">
+                                                    <input type="button" value="Xóa">
+                                                </a>
                                             </td> 
                                         </tr>
+                                        <?php endforeach?>
                                     </tbody>
                                 </table>
                             </div>

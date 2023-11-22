@@ -247,35 +247,48 @@
 
 
                                     <tbody>
-                                        <form action="">
-                                            <tr>
-                                                <th>Câu Hỏi</th>
-
-                                                <td><input type="text"></td>
-
-                                            </tr>
-                                            <tr>
-                                                <th>Nội Dung</th>
-
-                                                <td><input type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Hình Ảnh</th>
-
-                                                <td><input type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Đáp Án Đúng</th>
-
-                                                <td><input type="text"></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    <input type="button" value="Update">
-                                                </td>
-                                            </tr>
-                                        </form>
+                                    <form action="?act=UpdateDapAn" method="post" enctype="multipart/form-data">
+                                         <tr>
+                                             <th>Câu Hỏi</th>
+                                             <td>
+                                                <input type="hidden" name="id" value="<?= $kq['id']?>">
+                                                 <select name="cauHoiId" id="">
+                                                     <?php foreach($dsch as $ch) :?>
+                                                     <option value="<?= $ch['id']?>" <?= ($ch['id'] == $kq['cauHoiId']) ? 'selected': ''?>><?= $ch['noiDung']?></option>
+                                                     <?php endforeach?>
+                                                 </select>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <th>Nội Dung</th>
+                                                        
+                                             <td>
+                                                 
+                                                <input type="text" name="noiDung" value="<?= $kq['noiDung']?>">
+                                            </td>
+                                         </tr>
+                                         <tr>
+                                             <th>Hình Ảnh</th>
+                                             <td><input type="file" name="hinhAnh"  value="<?= $kq['hinhAnh']?>"></td>
+                                             <img src="../assets/upload/<?= $ch['hinhAnh']?>" width="80" alt="">
+                                         </tr>
+                                         <tr>
+                                             <th>Đáp Án Đúng</th>
+                                             <td><input type="number" name="laDapAnDung" value="<?= $kq['laDapAnDung']?>"></td>
+                                         </tr>
+                                          <?php 
+                                             if(isset($thongBao) && $thongBao != "") {
+                                                 echo $thongBao;
+                                             }
+                                          ?>               
+                                         <tr>
+                                             <td>
+                                                 <input type="submit" name="UpdateDapAn" value="Thêm">
+                                                 <a href="?act=NganHangDapAn">Ngan Hang Dap An</a>
+                                             </td>
+                                         </tr>
+                                     </form>                    
+                                   </tbody>
                                     </tbody>
                                 </table>
                             </div>

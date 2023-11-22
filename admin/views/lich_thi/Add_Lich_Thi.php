@@ -26,10 +26,10 @@
 </head>
 
 <body id="page-top">
-<input type="file" multiple>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
-emmet
+
         <!-- Sidebar -->
         <?php include_once '../assets/global/MenuSideBar.php'; ?>
         <!-- End of Sidebar -->
@@ -266,32 +266,33 @@ emmet
                 
                                                         
                                    <tbody>                
-                                   <form action="">
+                                   <form action="?act=AddLichThi" method="POST">
                                             <tr>
                                                 <th>Thời Gian Bắt Đầu</th>
 
-                                                <td><input type="text"></td>
+                                                <td><input type="datetime-local" name="thoiGianBatDau"></td>
 
                                             </tr>
                                             <tr>
                                                 <th>Thời Gian Kết Thúc</th>
 
-                                                <td><input type="text"></td>
+                                                <td><input type="datetime-local" name="thoiGianKetThuc"></td>
                                             </tr>
                                             <tr>
                                                 <th>Thời Gian Thi</th>
 
-                                                <td><input type="file"></td>
+                                                <td><input type="number" min="0" name="thoiGianThi"></td>
                                             </tr>
                                             <tr>
                                                 <th>Số Lượng Đề Thi</th>
 
-                                                <td><input type="text"></td>
+                                                <td><input type="number" min="0" name="soLuongDeThi"></td>
                                             </tr>
 
                                             <tr>
                                                 <td>
-                                                    <input type="button" value="Thêm">
+                                                    <input type="submit"  name="AddLichThi" value="Thêm">
+                                                    <a href="?act=ListLichThi">Danh sách </a>
                                                 </td>
                                             </tr>
                                         </form>                    

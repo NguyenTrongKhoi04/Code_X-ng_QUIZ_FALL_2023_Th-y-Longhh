@@ -261,6 +261,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
+                                        <td><a href="?act=AddLichThi"><input type="button" value="Thêm câu hỏi"></a></td>
                                         <tr>
                                             <th>ID</th>
                                             <th>Thời Gian Bắt Đầu</th>
@@ -271,17 +272,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>  
+                                        <?php foreach($dslt as $lt) : ?>
                                         <tr>
-                                            <td>ví dụ</td>
-                                            <td>ví dụ</td>
-                                            <td>ví dụ</td>
-                                            <td>ví dụ</td>
-                                            <td>ví dụ</td>
+                                            <td><?= $lt['id']?></td>
+                                            <td><?= $lt['thoiGianBatDau']?></td>
+                                            <td><?= $lt['thoiGianKetThuc']?></td>
+                                            <td><?= $lt['thoiGianThi']?></td>
+                                            <td><?= $lt['soLuongDeThi']?></td>
                                             <td>
-                                                <a href="<?=$adminAction?>UpdateDapAn"><input type="button" value="Sửa"></a>  
-                                                <input type="button" value="Xóa">
+                                                <a href="<?=$adminAction?>EditLichThi&id=<?= $lt['id']?>"><input type="button" value="Sửa"></a>  
+                                                <a onclick="return confirm('Bạn Có Muốn Xóa Không')" href="<?=$adminAction?>DeleteLichThi&id=<?= $lt['id']?>"><input type="button" value="Xóa"></a>
                                             </td> 
                                         </tr>
+                                        <?php endforeach?>
                                     </tbody>
                                 </table>
                             </div>

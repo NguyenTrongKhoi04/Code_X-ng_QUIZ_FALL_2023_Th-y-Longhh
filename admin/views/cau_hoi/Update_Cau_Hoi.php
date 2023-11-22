@@ -266,31 +266,34 @@
                 
                                                         
                                    <tbody>                
-                                       <form action="">
+                                   <form action="?act=UpdateCauHoi" method="post" enctype="multipart/form-data">
                                            <tr>
                                                <td>Nội Dung Câu Hỏi</td>
-                                               <td><input type="text"></td> 
+                                               <input type="hidden" name="id" value="<?= $kq['id']?>">
+                                               <td><input type="text" name="noiDung" value="<?= $kq['noiDung']?>"></td> 
                                                 
                                            </tr>
                                            <tr>
                                                <td>Hình Ảnh</td>
-                                               <td><input type="text"></td>                                                  
+                                               <td><input type="file" name="hinhAnh" value="<?= $kq['hinhAnh']?>"></td>     
+                                               <img src="../assets/upload/<?= $ch['hinhAnh']?>" width="80" alt="">                                             
                                            </tr>
                                            <tr>
                                                <td>Chuyên Đề</td>
-                                               <td><select name="" id="">
-                                                <option value="">Chuyên đề A</option>
-                                                <option value="">Chuyên đề B</option>
-                                                <option value="">Chuyên đề C</option>
+                                               <td><select name="chuyenDeId" id="">
+                                                <?php foreach($dscd  as $cd) : ?>
+                                                <option value="<?= $cd['id']?>" <?= ($cd['id'] == $kq['chuyenDeId']) ? 'selected': ''?>><?= $cd['tenChuyenDe']?></option>
+                                                <?php endforeach?>
                                                </select></td>                                                 
                                            </tr>                                               
                                            
                                            <tr>
                                                <td>
-                                                   <input type="button" value="Thêm">
+                                                   <input type="submit" name="UpdateCauHoi" value="Cập Nhập">
+                                                   <a href="?act=NganHangCauHoi">NganHangCauHoi</a>
                                                </td>
                                            </tr>
-                                       </form>                           
+                                       </form>                          
                                    </tbody>
                                </table>
                         </div>
