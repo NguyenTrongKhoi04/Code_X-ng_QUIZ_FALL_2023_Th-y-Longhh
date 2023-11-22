@@ -261,24 +261,40 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <td><a href="?act=AddLichThi"><input type="button" value="Thêm câu hỏi"></a></td>
+                                        <td><a href="?act=AddLichThi"><input type="button" value="Thêm Lịch Thi"></a></td>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Tên Kỳ Thi</th>
                                             <th>Thời Gian Bắt Đầu</th>
-                                            <th>Thời Gian Kết Thúc</th>
                                             <th>Thời Gian Thi</th>
+                                            <th>Thời Gian Kết Thúc</th>
                                             <th>Số Lượng Đề Thi</th>
+                                            <th>Chuyên Đề Thi</th>
                                             <th>Thao Tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>  
-                                        <?php foreach($dslt as $lt) : ?>
+                                        <?php foreach($danhSachLichThi as $lt) : ?>
+                                            <?php     // Chuyển đổi thời gian bắt đầu thành đối tượng DateTime
+    $thoiGianBatDau = new DateTime($lt['thoiGianBatDau']);
+    
+    // Thêm 90 phút
+    $thoiGianBatDau->add(new DateInterval('PT90M'));
+    
+    // Định dạng lại thời gian kết thúc
+    $thoiGianKetThuc = $thoiGianBatDau->format('Y-m-d H:i:s'); ?>
                                         <tr>
                                             <td><?= $lt['id']?></td>
+                                            <td><?= $lt['tenLichThi']?></td>
                                             <td><?= $lt['thoiGianBatDau']?></td>
-                                            <td><?= $lt['thoiGianKetThuc']?></td>
+                                            <td><?= $thoiGianKetThuc?></td>
                                             <td><?= $lt['thoiGianThi']?></td>
                                             <td><?= $lt['soLuongDeThi']?></td>
+                                            <?php foreach($chuyenDe as $n){?>
+                                                <?php if($lt['chuyenDeId'] == $n['id'] ) {?>
+                                                    <td><?= $n['tenChuyenDe'] ?></td>
+                                                <?php } ?>
+                                            <?php } ?>
                                             <td>
                                                 <a href="<?=$adminAction?>EditLichThi&id=<?= $lt['id']?>"><input type="button" value="Sửa"></a>  
                                                 <a onclick="return confirm('Bạn Có Muốn Xóa Không')" href="<?=$adminAction?>DeleteLichThi&id=<?= $lt['id']?>"><input type="button" value="Xóa"></a>

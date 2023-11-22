@@ -244,27 +244,23 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Tên chuyên đề</th>
-                                            <th>Bộ Câu Hỏi</th>
-                                            <th>Bộ Đáp Án</th>
                                             <th>Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach($allChuyenDe as $i) : ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Toán</td>
-                                            <td>1</td>
-                                            <td>2</td>
+                                            <td><?= $i['id'] ?></td>
+                                            <td><?= $i['tenChuyenDe'] ?></td>
                                             <td>
-                                                <a href="<?=$adminAction?>UpdateChuyenDe">
+                                                <a href="<?=$adminAction?>UpdateChuyenDe&id=<?= $i['id'] ?>">
                                                     <input type="button" value="Sửa">
                                                 </a>
-                                                <a href="">
-                                                    <input type="button" value="Xóa">
-                                                </a>
+                                           
                                             </td>
                                         </tr>
-
+                                        <?php endforeach ?> 
+                                        
                                     </tbody>
                                 </table>
                             </div>

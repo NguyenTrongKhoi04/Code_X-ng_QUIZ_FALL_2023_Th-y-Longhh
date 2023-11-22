@@ -4,12 +4,12 @@
         $result = query_All($sql);
         return $result;
     }
-
-    function add_LichThi($thoiGianBatDau,$thoiGianKetThuc,$thoiGianThi,$soLuongDeThi) {
-        $sql = "INSERT INTO lichthi (thoiGianBatDau, thoiGianKetThuc, thoiGianThi, soLuongDeThi) 
-                VALUES ('$thoiGianBatDau', '$thoiGianKetThuc', '$thoiGianThi', '$soLuongDeThi')";
-         $result = pdo_Execute($sql);
-         return $result;
+    
+    function add_LichThi($thoiGianBatDau,$thoiGianThi,$soLuongDeThi,$chuyenDeId,$tenLichThi) {
+        $sql = "INSERT INTO lichthi 
+                VALUES ('','$thoiGianBatDau','$thoiGianThi','$soLuongDeThi','$chuyenDeId','$tenLichThi')";
+            var_dump($sql);
+        return pdo_Execute($sql);
     }
 
     function loadOne_LichThi($id) {
@@ -31,4 +31,9 @@
         $result = pdo_Execute($sql);
         return $result;
     }
-?>
+
+    function check_LichThi($tenLichThi){
+        $sql = "SELECT * FROM lichthi Where tenLichThi= '$tenLichThi'";
+        $result = query_One($sql);
+        return $result;
+    }
