@@ -18,7 +18,6 @@
  * Ví dụ:  $b = Select_All('bang1','*',null,'_id_ten_loai_','_1_3_');
  *      =>> "SELECT * FROM bang1 ORDER BY id DESC , ten , loai DESC "
  */
-<<<<<<< HEAD
 
 function insertChuyenDe($tenChuyenDe, $boCauHoi, $boDapAn) {
     $sql = "INSERT INTO `chuyende`(`tenChuyenDe`, `boCauHoi`, `boDapAn`) VALUES (?, ?, ?)";
@@ -51,12 +50,10 @@ function getOneChuyenDe() {
 //Debug thì tự ông để riêng, để chung nên để tối giản lại.
 //Còn nếu ông dùng chung thì ít nhất nên để demo, vì mỗi người hiểu một kiểu khác nhau.
 function select_All($tenBang,$tenCot=null,$limit=null,$params=null,$desc=null){
-=======
  function select_All($tenBang,$tenCot=null,$limit=null,$params=null,$desc=null){
     if($tenCot==null){
         $tenCot =' * ';
     }
->>>>>>> 6e17a91d20cb93c1c35fd152db3722604be9a9dc
     $sql ='SELECT '.$tenCot.' FROM '.$tenBang;
 
     //Kiểm tra tham sô truyền vào. Nếu (?)
@@ -157,3 +154,4 @@ function check_Login(){
     }
 }
 
+}
