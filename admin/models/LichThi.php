@@ -8,8 +8,21 @@
     function add_LichThi($thoiGianBatDau,$thoiGianThi,$soLuongDeThi,$chuyenDeId,$tenLichThi) {
         $sql = "INSERT INTO lichthi 
                 VALUES ('','$thoiGianBatDau','$thoiGianThi','$soLuongDeThi','$chuyenDeId','$tenLichThi')";
-            var_dump($sql);
-        return pdo_Execute($sql);
+        $last_Id_LichThi = pdo_Execute_Return_LastinsertID($sql);
+
+        for($dem=0;$dem < $soLuongDeThi ;$dem++){
+            $sql = "INSERT INTO dethi VALUES ('','$last_Id_LichThi')";
+            $last_Id_DeThi = pdo_Execute_Return_LastinsertID($sql);
+            
+        $sql = "SELECT * FROM cauhoi where chuyenDeId = '$chuyenDeId' ORDER BY RAND() LIMIT 10  ";
+        $soLuongCauHoi = query_All($sql);
+        foreach($soLuongCauHoi as $i){
+            extract($i);
+            $sql = "INSERT INTO chitietdethi VALUES ('','$last_Id_DeThi','$id')";
+            pdo_Execute($sql);
+        }
+        }
+
     }
 
     function loadOne_LichThi($id) {

@@ -9,6 +9,7 @@ include_once 'models/ChuyenDe.php';
 include_once 'models/DapAn.php';
 include_once 'models/DeThi.php';
 include_once 'models/LichThi.php';
+include_once 'models/TaiKhoan.php';
 include_once 'models/QuanLyCauHoi.php';
 
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
@@ -78,6 +79,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                         $select = $vaiTro ?? $arrAccount['vaiTro'];
                         $error = "Update thành công";
                         update_Accouut($id, $tenDangNhap, $matKhau, $img, $email, $diaChi, $select);
+                   
                         header("Location:" . $adminAction . "ListAccount");
                     }
                 } else {
@@ -356,18 +358,24 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 extract($_POST);
               
-                $arrCheckTenLichThi = check_LichThi($tenLichThi);
-                if(is_array($arrCheckTenLichThi)){
-                    echo "<script>alert('Tên lịch thi bị trùng ')</script>";
-                }else{
-                    echo "<script>alert('Thêm Lịch Thi Thành Công ')</script>";
+                // $arrCheckTenLichThi = check_LichThi($tenLichThi);
+                // if(is_array($arrCheckTenLichThi)){
+                //     echo "<script>alert('Tên lịch thi bị trùng ')</script>";
+                // }else{
+                //     echo "<script>alert('Thêm Lịch Thi Thành Công ')</script>";
                     add_LichThi($thoiGianBatDau,$thoiGianThi,$soLuongDeThi,$chuyenDeId,$tenLichThi);
-                    header('location: AdminController.php?act=NganHangChuyenDe');
-                }
-               
+                //     header('location: AdminController.php?act=NganHangChuyenDe');
+                // }
             }
             include_once 'views/lich_thi/Add_Lich_Thi.php';
             break;
+        case 'DeleteLichThi':
+            $id = $_GET['id'];
+            delete_LichThi($id);
+            header('location: AdminController.php?act=ListLichThi');
+            break;    
+
+
         case 'UpdateLichThi': //update những lịch thi chưa xảy ra
             include_once 'views/lich_thi/Update_Lich_Thi.php';
             break;
@@ -378,6 +386,10 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         * ====================================================================================
         */
         case 'ListDeThi':
+            $dsDeThi=loadAll_DeThi();
+            // echo"<pre>";
+            // print_r($a);
+            // echo"</pre>";
             include_once 'views/de_thi/List_De_Thi.php';
             break;
         case 'AddDeThi':

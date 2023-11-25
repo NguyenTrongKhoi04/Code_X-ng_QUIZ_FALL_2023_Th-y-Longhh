@@ -262,21 +262,22 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Chuyên Đề</th>
+                                            <th>ID Đề Thi</th>
                                             <th>Lịch Thi</th>
+                                            <th>Chuyên Đề</th>
                                             <th>Thao Tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>  
-                                        <?php foreach($dslt as $lt) : ?>
+                                        <?php foreach($dsDeThi as $i) : ?>
                                         <tr>
-                                            <td><?= $lt['id']?></td>
-                                            <td><?= $lt['tenChuyenDe']?></td>
-                                            <td><?= $lt['lichThiId']?></td>
+                                            <td><?= $i['id']?></td>
+                                            <td><?= $i['tenLichThi']?></td>
+                                            <td><?= $i['tenChuyenDe']?></td>
                                             <td>
-                                                <a href="<?=$adminAction?>UpdateDapAn"><input type="button" value="Sửa"></a>  
-                                                <input type="button" value="Xóa">
+                                                <a href="<?=$adminAction?>UpdateDapAn"><input type="button" value="Xóa"></a>  
+                                                <a href="<?=$adminAction?>UpdateDapAn"><input type="button" value="Xem Đề Thi"></a>  
+
                                             </td> 
                                         </tr>
                                         <?php endforeach?>

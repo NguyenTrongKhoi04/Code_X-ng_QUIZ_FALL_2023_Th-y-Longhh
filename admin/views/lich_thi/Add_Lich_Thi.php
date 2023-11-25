@@ -257,7 +257,7 @@
                                             <tr>
                                                 <th>Thời Gian Bắt Đầu</th>
 
-                                                <td><input type="datetime-local" name="thoiGianBatDau"></td>
+                                                <td><input type="datetime-local" class="thoiGian" name="thoiGianBatDau" ></td>
 
                                             </tr>
                                             <tr>
@@ -356,6 +356,20 @@
 
         <!-- Page level custom scripts -->
         <script src="../assets/js/datatables-demo.js"></script>
+     
+        <script>
+    // Lấy ngày và giờ hiện tại
+    var now = new Date();
+
+    // Định dạng ngày và giờ thành chuỗi có thể sử dụng cho thuộc tính min
+    var formattedNow = now.toISOString().slice(0,16);
+
+    // Tìm thẻ input theo class
+    var inputElement = document.querySelector('.thoiGian');
+
+    // Đặt thuộc tính min cho input datetime-local
+    inputElement.setAttribute("min", formattedNow);
+</script>
 </body>
 
 </html>

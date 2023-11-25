@@ -275,14 +275,15 @@
                                     </thead>
                                     <tbody>  
                                         <?php foreach($danhSachLichThi as $lt) : ?>
-                                            <?php     // Chuyển đổi thời gian bắt đầu thành đối tượng DateTime
-    $thoiGianBatDau = new DateTime($lt['thoiGianBatDau']);
+                                            <?php    
+                                            // Chuyển đổi thời gian bắt đầu thành đối tượng DateTime
+                                            $thoiGianBatDau = new DateTime($lt['thoiGianBatDau']);
     
-    // Thêm 90 phút
-    $thoiGianBatDau->add(new DateInterval('PT90M'));
-    
-    // Định dạng lại thời gian kết thúc
-    $thoiGianKetThuc = $thoiGianBatDau->format('Y-m-d H:i:s'); ?>
+                                            // Thêm 90 phút
+                                            $thoiGianBatDau->add(new DateInterval("PT" . $lt['thoiGianThi'] . "M"));
+                                                                                
+                                            // Định dạng lại thời gian kết thúc
+                                            $thoiGianKetThuc = $thoiGianBatDau->format('Y-m-d H:i:s'); ?>
                                         <tr>
                                             <td><?= $lt['id']?></td>
                                             <td><?= $lt['tenLichThi']?></td>
