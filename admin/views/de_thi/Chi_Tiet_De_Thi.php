@@ -252,14 +252,15 @@
                                     </thead>
                                     <tbody>
                                         <?php foreach ($dsct_DeThi as $ctdt) : ?>
-                                            <?php
-                                             $dapAnDung = $ctdt['laDapAnDung'] == 1;
-                                             $mauSac = $dapAnDung ? 'green' : 'red';
-                                            ?>
-                                            <tr class="<?php echo $class; ?>" >
+                                            <tr>
                                                 <td><?= $ctdt['id'] ?></td>
                                                 <td><?= $ctdt['tenCauHoi'] ?></td>
-                                                <td style="color: <?= $mauSac?>"><?= $ctdt['tenDapAn'] ?></td>
+                                                <td>
+                                                    <?php $danhSachDapAn = explode(',', $ctdt['tenDapAn']); ?> // Chuyển chuỗi thành mảng
+                                                    <?php foreach ($danhSachDapAn as $dapAn) : ?>
+                                                        <span style="color: <?= $dapAn === '1' ? 'green' : 'red' ?>"><?= $dapAn ?></span><br>
+                                                    <?php endforeach ?>
+                                                </td>
                                                 <td>
                                                     <a href="<?= $adminAction ?>UpdateDapAn"><input type="button" value="Sửa"></a>
                                                     <input type="button" value="Xóa">
