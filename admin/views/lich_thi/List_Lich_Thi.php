@@ -293,7 +293,7 @@
                                             <td><?= $lt['soLuongDeThi']?></td>
                                             <?php foreach($chuyenDe as $n){?>
                                                 <?php if($lt['chuyenDeId'] == $n['id'] ) {?>
-                                                    <td><?= $n['tenChuyenDe'] ?></td>
+                                                    <td><?= $n['tenChuyenDe'    ] ?></td>
                                                 <?php } ?>
                                             <?php } ?>
                                             <td>
