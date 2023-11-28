@@ -72,7 +72,7 @@
                                         Quên mật khẩu? <a class="small" href="forgot-password.html">Hãy nhấn vào tôi</a>
                                     </div>
                                     <div class="text-center">
-                                        Chưa có tài khoản ?<a class="small" href="register.html">Hãy tạo luôn !</a>
+                                        Chưa có tài khoản ?<a class="small" href="./Register.php">Hãy tạo luôn !</a>
                                     </div>
                                 </div>
                             </div>
