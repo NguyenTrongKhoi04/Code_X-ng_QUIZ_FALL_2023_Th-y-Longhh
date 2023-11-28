@@ -11,6 +11,7 @@ include_once 'models/DeThi.php';
 include_once 'models/LichThi.php';
 include_once 'models/TaiKhoan.php';
 include_once 'models/QuanLyCauHoi.php';
+include_once 'models/ChiTietDeThi.php';
 
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
@@ -387,9 +388,21 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         */
         case 'ListDeThi':
             $dsDeThi=loadAll_DeThi();
-            // echo"<pre>";
-            // print_r($a);
-            // echo"</pre>";
+            include_once 'views/de_thi/List_De_Thi.php';
+            break;
+        case 'ChiTietDeThi':
+            if(isset($_GET['id']) && ($_GET['id'] > 0)){
+                $id = $_GET['id'];
+                $dsct_DeThi = load_ChiTietDeThi($id);
+            }
+            include "views/de_thi/Chi_Tiet_De_Thi.php";
+            break;
+        case "DeleteDeThi":
+            if(isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                delete_DeThi($id);
+            }
+            $dsDeThi=loadAll_DeThi();
             include_once 'views/de_thi/List_De_Thi.php';
             break;
         case 'AddDeThi':

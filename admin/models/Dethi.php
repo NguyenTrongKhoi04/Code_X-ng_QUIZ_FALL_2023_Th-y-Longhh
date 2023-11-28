@@ -9,4 +9,9 @@
         return $result;
     }
 
+    function delete_DeThi($id) {
+        $sql = "DELETE FROM dethi WHERE id = $id";
+        $result = pdo_Execute($sql);
+        return $result;
+    }
 ?>

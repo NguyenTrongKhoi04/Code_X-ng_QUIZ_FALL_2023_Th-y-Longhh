@@ -6,7 +6,9 @@
     }
 
     function add_ChuyenDe($tenchuyende){
-        $sql = "INSERT INTO chuyende VALUES ('','$tenchuyende')";
+        $sql = "INSERT INTO chuyende(tenchuyende) VALUES ('$tenchuyende')";
+        // var_dump($sql);
+        // die;
         return pdo_Execute($sql);
     }
 

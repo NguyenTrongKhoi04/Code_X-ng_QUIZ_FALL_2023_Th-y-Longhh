@@ -275,9 +275,8 @@
                                             <td><?= $i['tenLichThi']?></td>
                                             <td><?= $i['tenChuyenDe']?></td>
                                             <td>
-                                                <a href="<?=$adminAction?>UpdateDapAn"><input type="button" value="Xóa"></a>  
-                                                <a href="<?=$adminAction?>UpdateDapAn"><input type="button" value="Xem Đề Thi"></a>  
-
+                                                <a href="<?=$adminAction?>DeleteDeThi&id=<?= $i['id']?>" onclick="return confirm('Bạn có muốn xóa không')"><input type="button" value="Xóa"></a>  
+                                                <a href="<?=$adminAction?>ChiTietDeThi&id=<?= $i['id']?>"><input type="button" value="Xem Chi Tiết"></a>  
                                             </td> 
                                         </tr>
                                         <?php endforeach?>
