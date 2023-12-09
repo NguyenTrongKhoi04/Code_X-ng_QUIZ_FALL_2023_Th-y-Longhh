@@ -255,7 +255,9 @@
                                             <tr>
                                                 <td><?= $ctdt['id'] ?></td>
                                                 <td><?= $ctdt['tenCauHoi'] ?></td>
+                                                
                                                 <td>
+                                                    
                                                     <?php $danhSachDapAn = explode(',', $ctdt['tenDapAn']); ?> // Chuyển chuỗi thành mảng
                                                     <?php foreach ($danhSachDapAn as $dapAn) : ?>
                                                         <span style="color: <?= $dapAn === '1' ? 'green' : 'red' ?>"><?= $dapAn ?></span><br>
