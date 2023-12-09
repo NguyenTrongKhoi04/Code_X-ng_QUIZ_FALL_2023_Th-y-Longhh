@@ -1,6 +1,8 @@
 <?php 
 include_once "../app/Pdo.php";
 include_once "models/DangKy.php";
+include_once "models/DanhSachLichThi.php";
+include_once "models/BaiThi.php";
 
 
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
@@ -28,6 +30,23 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 }
             }
             header('location: ../assets/global/Login.php');
+            break;
+        case "Home" :
+            $dslt = loadAll_DanhSachLichThi();
+            include_once "views/Home.php";
+            break;
+        case "InforUser":
+           
+            include_once "views/InforUser.php";
+            break;
+        case "Test":
+            if(isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                $btct = BaiThi($id);
+                // var_dump($btct);
+                // die;
+            }
+            include_once "views/TrangThi.php";
             break;
     }
 }
