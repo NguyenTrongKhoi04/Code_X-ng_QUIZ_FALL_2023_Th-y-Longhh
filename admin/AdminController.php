@@ -394,6 +394,10 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             if(isset($_GET['id']) && ($_GET['id'] > 0)){
                 $id = $_GET['id'];
                 $dsct_DeThi = load_ChiTietDeThi($id);
+                echo "<pre>";
+                print_r($dsct_DeThi);
+                echo "</pre>";
+
             }
             include "views/de_thi/Chi_Tiet_De_Thi.php";
             break;

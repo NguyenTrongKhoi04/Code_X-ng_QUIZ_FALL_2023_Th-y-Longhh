@@ -241,7 +241,7 @@
 
                                     <tr>
                                         <th></th>
-                                        <th>Thông tin</th>
+                                        <th><h3>Được tích là đáp án đúng</h3></th>
                                         <th></th>
                                     </tr>
 
