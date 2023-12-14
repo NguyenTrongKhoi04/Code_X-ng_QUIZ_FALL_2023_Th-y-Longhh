@@ -10,5 +10,3 @@
         $result = pdo_Execute($sql);
         return $result;
     }
-
-?>

@@ -24,10 +24,12 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         */
         case 'dangnhap':
             check_Login();
+     
             if ($_SESSION['user']['vaiTro'] == 1) {
                 header('location: AdminController.php');
-            } else
-                include_once 'views/diem/List_Diem.php';
+            } else{
+                header('location: ../user/UserController.php');
+            }
             break;
         case 'dangxuat':
             session_destroy();
