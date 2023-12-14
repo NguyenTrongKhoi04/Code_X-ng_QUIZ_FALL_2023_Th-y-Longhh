@@ -231,13 +231,20 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Thêm Đáp Án</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Update Tài Khoản</h1>
 
                     <!-- DataTales Example -->
+
                     <div class="card shadow mb-4">
+                        <?php if (isset($error)) : ?>
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary" style="color:red !important;"><?= $error ?></h6>
+                            </div>
+                        <?php endif ?>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
                                     <tr>
                                         <th></th>
                                         <th>Thông tin</th>
@@ -246,39 +253,49 @@
 
 
                                     <tbody>
-                                        <form action="?act=AddDapAn" method="post" enctype="multipart/form-data">
+                                        <form action="<?= $adminAction ?>UpdateAccount&id=<?=$arrAccount['id']?>" method="POST" enctype="multipart/form-data">
                                             <tr>
-                                                <th>Câu Hỏi</th>
+                                                <th>Tên Đăng Nhập</th>
+
+                                                <td><input type="text" name="tenDangNhap" value="<?= $arrAccount['tenDangNhap']?>"></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th>Mật Khẩu</th>
+
+                                                <td><input type="password" name="matKhau" value="<?= $arrAccount['matKhau']?>"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Ảnh Đại Diện</th>
+                                                <img src="<?= $adminImage.$arrAccount['anhDaiDien'] ?>" width="50%" alt="">
+                                                <td><input type="file" name="anhDaiDien"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Email</th>
+
+                                                <td><input type="text" name="email" value="<?= $arrAccount['email']?>"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Địa Chỉ</th>
+
+                                                <td><input type="text" name="diaChi" value="<?= $arrAccount['diaChi']?>"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Vai Trò</th>
                                                 <td>
-                                                    <select name="cauHoiId" id="">
-                                                        <?php foreach ($dsch as $ch) : ?>
-                                                            <option value="<?= $ch['id'] ?>"><?= $ch['noiDung'] ?></option>
-                                                        <?php endforeach ?>
+                                                    <select name="vaiTro" required>
+                                                        <?php if($arrAccount==1){
+                                                            $hienThiVaiTro = 'Admin';
+                                                        }else{$hienThiVaiTro = 'User';} ?>
+                                                        <option selected hidden disabled><?= $hienThiVaiTro?></option>
+                                                        <option value="0">User</option>
+                                                        <option value="1">Admin</option>
                                                     </select>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th>Nội Dung</th>
-                                                <td><input type="text" name="noiDung"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Hình Ảnh</th>
-                                                <td><input type="file" name="hinhAnh"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Đáp Án Đúng</th>
-                                                <td><input type="number" min="0" name="laDapAnDung"></td>
-                                            </tr>
-                                            <?php
-                                            if (isset($thongBao) && $thongBao != "") {
-                                                echo $thongBao;
-                                            }
-
-                                            ?>
-                                            <tr>
                                                 <td>
-                                                    <input type="submit" name="AddDapAn" value="Cập Nhập">
-                                                    <a href="?act=NganHangDapAn">Ngan Hang Dap An</a>
+                                                    <input type="submit" name="add" value="Update">
                                                 </td>
                                             </tr>
                                         </form>

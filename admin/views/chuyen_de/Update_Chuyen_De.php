@@ -266,27 +266,25 @@
                 
                                                         
                                    <tbody>                
-                                       <form action="">
+                                       <form action="<?=$adminAction?>UpdateChuyenDe&id=<?=$id?>" method="POST">
+                                            <tr>
+                                                <td>ID</td>
+                                                <td><?= $id ?></td>
+                                            </tr>
                                            <tr>
                                                <td>Tên Chuyên Đề</td>
-                                               <td><input type="text"></td> 
+                                               <td><input type="text" name="tenchuyende" value="<?= $tenChuyenDe ?>"></td> 
                                                 
-                                           </tr>
-                                           <tr>
-                                               <td>Bộ Câu Hỏi</td>
-                                               <td><input type="text"></td>                                                  
-                                           </tr>
-                                           <tr>
-                                               <td>Bộ Đáp Án</td>
-                                               <td><input type="text"></td>                                                 
-                                           </tr>                                               
+                                           </tr>                                             
                                            
                                            <tr>
                                                <td>
-                                                   <input type="button" value="Update">
+                                                   <input type="submit" value="Update">
+                                                   <a href="<?=$adminAction?>NganHangChuyenDe"><input type="button" value="Danh Sách Chuyên Đề"></a>   
                                                </td>
                                            </tr>
-                                       </form>                           
+                                       </form>      
+                  
                                    </tbody>
                                </table>
                         </div>
