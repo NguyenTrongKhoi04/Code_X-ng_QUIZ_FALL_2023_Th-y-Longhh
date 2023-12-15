@@ -288,8 +288,8 @@
                                             <td><?= $lt['id']?></td>
                                             <td><?= $lt['tenLichThi']?></td>
                                             <td><?= $lt['thoiGianBatDau']?></td>
+                                            <td><?= $lt['thoiGianThi']?> phút</td>
                                             <td><?= $thoiGianKetThuc?></td>
-                                            <td><?= $lt['thoiGianThi']?></td>
                                             <td><?= $lt['soLuongDeThi']?></td>
                                             <?php foreach($chuyenDe as $n){?>
                                                 <?php if($lt['chuyenDeId'] == $n['id'] ) {?>
