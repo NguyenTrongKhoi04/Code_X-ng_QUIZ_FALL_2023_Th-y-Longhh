@@ -256,7 +256,7 @@
                                                 <a href="<?=$adminAction?>UpdateChuyenDe&id=<?= $i['id'] ?>">
                                                     <input type="button" value="Sửa">
                                                 </a>
-                                           
+                                                <a href="?act=DeleteChuyenDe&id=<?= $i['id'] ?>" onclick="return confirm('Bạn Có Muốn Xóa Không')" ><input type="button" value="Xóa"></a>
                                             </td>
                                         </tr>
                                         <?php endforeach ?> 

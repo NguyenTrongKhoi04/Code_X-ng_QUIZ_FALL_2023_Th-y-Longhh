@@ -241,7 +241,9 @@
 
                                     <tr>
                                         <th></th>
-                                        <th><h3>Được tích là đáp án đúng</h3></th>
+                                        <th>
+                                            <h3>Được tích là đáp án đúng</h3>
+                                        </th>
                                         <th></th>
                                     </tr>
 
@@ -250,47 +252,55 @@
                                         <form action="?act=laDapAnDung" method="post" enctype="multipart/form-data">
 
                                             <?php
-                                                $daHienThi = []; // Mảng để theo dõi câu hỏi đã hiển thị
+                                            $daHienThi = []; // Mảng để theo dõi câu hỏi đã hiển thị
 
-                                                foreach ($qlch as $ch) :
-                                                    // Kiểm tra xem câu hỏi đã được hiển thị chưa
-                                                    if (!in_array($ch['noiDung'], $daHienThi)) :
-                                                        $daHienThi[] = $ch['noiDung']; // Thêm câu hỏi vào mảng đã hiển thị
+                                            foreach ($qlch as $ch) :
+                                                // Kiểm tra xem câu hỏi đã được hiển thị chưa
+                                                if (!in_array($ch['noiDung'], $daHienThi)) :
+                                                    $daHienThi[] = $ch['noiDung']; // Thêm câu hỏi vào mảng đã hiển thị
                                             ?>
-                                                    <div>Câu hỏi: <?= $ch['noiDung'] ?></div> <br>
+                                                    <div><a href="?act=NganHangCauHoi">Câu hỏi: <?= $ch['noiDung'] ?></a></div> <br>
                                                 <?php endif ?>
                                             <?php endforeach ?>
-
-                                            <?php foreach ($qlch as $ch) { 
-                                
+                                            <?php $soDapAnTonTai = 0 ?>
+                                            <?php foreach ($qlch as $ch) {
+                                                $soDapAnTonTai = $ch['noiDungDapAn'];
                                             ?>
                                                 <div>
-                                                   
-                                                    <input type="checkbox" <?= ($ch['laDapAnDung'] === 1) ? 'checked': '' ?> name="dapAnDung[]" value='<?= $ch['dapAnId'] ?>' id="dapAn<?= $ch['dapAnId'] ?>">
+
+                                                    <input type="checkbox" <?= ($ch['laDapAnDung'] === 1) ? 'checked' : '' ?> name="dapAnDung[]" value='<?= $ch['dapAnId'] ?>' id="dapAn<?= $ch['dapAnId'] ?>">
                                                     <label for="dapAn<?= $ch['dapAnId'] ?>"><?= $ch['noiDungDapAn'] ?></label>
 
                                                 </div>
-                                            <?php }?>
+                                                <?php
+                                                // Kiểm tra nếu $noiDungDapAn không rỗng
+                                                if (!empty($noiDungDapAn)) {
+                                                    $soDapAnTonTai++;
+                                                }
+                                                ?>
+                                            <?php } ?>
 
                                             <?php
-                                                if(isset($qlch)) {
-                                                    foreach ($qlch as $ch) {
-                                                        extract($ch);
-                                                    }
+                                            if (isset($qlch)) {
+                                                foreach ($qlch as $ch) {
+                                                    extract($ch);
                                                 }
+                                            }
                                             ?>
-                                            
+
 
                                             <input type="submit" name="chonDapAnDung" value="Gửi">
-                                            <div class="btn" onclick="hienAnInput()">Thêm Đáp Án</div>
+                                            <?php if ($soDapAnTonTai < 4) : ?>
+                                                <div class="btn" onclick="hienAnInput()">Thêm Đáp Án</div>
+                                            <?php endif ?>
                                         </form>
                                         <div id="themDapAnDiv" style="display: none;">
-                                        <form action="?act=ThemDapAnMoi&id=<?= $cauHoiId?>" method="post">
-                                            <input type="hidden" name="cauHoiId" value="<?= $cauHoiId ?>">
-                                            <input type="text" name="noiDung" id="noiDungInput">
-                                            <input type="submit" name="addDapAnQuanLyCauHoi" value="Thêm đáp án"> <br><br>
-                                        </form>
-                                            </div>
+                                            <form action="?act=ThemDapAnMoi&id=<?= $cauHoiId ?>" method="post">
+                                                <input type="hidden" name="cauHoiId" value="<?= $cauHoiId ?>">
+                                                <input type="text" name="noiDung" id="noiDungInput">
+                                                <input type="submit" name="addDapAnQuanLyCauHoi" value="Thêm đáp án"> <br><br>
+                                            </form>
+                                        </div>
 
                                     </tbody>
                                 </table>

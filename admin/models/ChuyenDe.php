@@ -27,3 +27,15 @@
         $sql = "UPDATE chuyende SET tenChuyenDe = '$tenchuyende' WHERE id = '$id' ";
         return pdo_Execute($sql);
     }
+
+    function delete_ChuyenDe($id) {
+        $deleteDethi = "DELETE FROM dethi WHERE id_LichThi IN (SELECT id FROM lichthi WHERE chuyenDeId = $id)";
+        pdo_Execute($deleteDethi);
+        
+        $deleteLichThi = "DELETE FROM lichthi WHERE chuyenDeId = $id";
+        pdo_Execute($deleteLichThi);
+
+        $sql = "DELETE FROM chuyende WHERE id = $id";
+        $result =  pdo_Execute($sql);
+        return $result;
+    }

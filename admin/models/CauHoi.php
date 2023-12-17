@@ -13,11 +13,12 @@
                         ch.noiDung, 
                         ch.hinhAnh, 
                         cd.tenChuyenDe, 
+                        da.laDapAnDung,
                         COUNT(da.id) AS soDapAn
                 FROM cauhoi ch 
                 JOIN chuyende cd ON ch.chuyenDeId = cd.id
                 LEFT JOIN dapan da ON ch.id = da.cauHoiId
-                GROUP BY ch.id, ch.noiDung, ch.hinhAnh, cd.tenChuyenDe
+                GROUP BY ch.id, ch.noiDung, ch.hinhAnh, cd.tenChuyenDe, da.laDapAnDung
                 ORDER BY ch.id DESC";
         $result = query_All($sql);
         
@@ -71,9 +72,43 @@
 
     // Xóa các trường dữ liệu của bảng câu hỏi theo id câu hỏi
     function delete_CauHoi($id) {
-        $sql = "DELETE FROM cauhoi WHERE id=$id";
-        $result = pdo_Execute($sql);
-        return $result;
+        try {
+            // Bước 1: Xóa tất cả các dòng trong bảng 'chitietdethi' có idCauHoi tương ứng
+            $sqlDeleteChitietdethi = "DELETE FROM chitietdethi WHERE idCauHoi = $id";
+            pdo_Execute($sqlDeleteChitietdethi);
+    
+            // Bước 2: Xóa tất cả các đáp án của câu hỏi từ bảng 'dapan'
+            $sqlDeleteDapan = "DELETE FROM dapan WHERE cauHoiId = $id";
+            pdo_Execute($sqlDeleteDapan);
+    
+            // Bước 3: Xóa câu hỏi từ bảng 'cauhoi'
+            $sqlDeleteCauHoi = "DELETE FROM cauhoi WHERE id = $id";
+            $result = pdo_Execute($sqlDeleteCauHoi);
+    
+            return $result;
+        } catch (PDOException $e) {
+            // Xử lý ngoại lệ nếu có
+            // Ví dụ: log lỗi, gửi email cảnh báo, hoặc thực hiện các hành động khác
+            return false;
+        }
     }
+    
 
+    // function delete_CauHoi($id) {
+    //     try {
+    //         // Bước 1: Xóa tất cả đáp án của câu hỏi từ bảng 'dapan'
+           
+    
+    //         // Bước 2: Xóa câu hỏi từ bảng 'cauhoi'
+    //         $sqlDeleteCauHoi = "DELETE FROM cauhoi WHERE id = $id";
+    //         $result = pdo_Execute($sqlDeleteCauHoi);
+    
+    //         return $result;
+    //     } catch (PDOException $e) {
+    //         // Xử lý ngoại lệ nếu có
+    //         // Ví dụ: log lỗi, gửi email cảnh báo, hoặc thực hiện các hành động khác
+    //         return false;
+    //     }
+    // }
+    
 ?>

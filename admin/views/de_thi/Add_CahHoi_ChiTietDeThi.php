@@ -231,125 +231,139 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Danh Sách Câu Hỏi</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Update Câu Hỏi</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
 
-                                            <td><a href="?act=AddCauHoi"><input type="button" value="Thêm câu hỏi"></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nội Dung</th>
-                                            <th>Hình Ảnh</th>
-                                            <th>Chuyên Đề</th>
+                                    <tr>
+                                        <th></th>
+                                        <th>Thông tin</th>
+                                        <th></th>
+                                    </tr>
 
-                                            <th>Quản Lý Câu Hỏi</th>
 
-                                            <th>Thao Tác</th>
-                                        </tr>
-                                    </thead>
                                     <tbody>
-
-                                        <?php foreach ($dsch as $ch) : ?>
+                                        <form action="?act=AddCauHoiChiTietDeThi" method="post" enctype="multipart/form-data">
                                             <tr>
-                                                <td><?= $ch['id'] ?></td>
-                                                <td <?php if ($ch['soDapAn'] == 0) {
-                                                        echo 'style="color: red;"';
-                                                    } elseif ($ch['soDapAn'] > 0 && $ch['soDapAn'] != $ch['laDapAnDung']) {
-                                                        echo 'style="color: yellow;"';
-                                                    } else {
-                                                        echo 'style="color: green;"';
-                                                    } ?>><?= $ch['noiDung'] ?></td>
+                                                <?php foreach ($dsch_ctdt  as $ch) {
+                                                    extract($ch);
+                                                } ?>
+                                                <td>Chuyên đề</td>
+
+                                                <td> <strong><?= $tenChuyenDe ?></strong> </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td><input type="hidden" name="idDeThi" value="<?= $kq['idDeThi'] ?>"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Câu Hỏi</td>
                                                 <td>
-                                                    <img src="../assets/upload/<?= $ch['hinhAnh'] ?>" width="80" alt="">
-                                                </td>
-                                                <td><?= $ch['tenChuyenDe'] ?></td>
-                                                <td><a href="?act=QuanLyCauHoi&id=<?= $ch['id'] ?>"><input type="button" value="Quản lý"></a></td>
-                                                <td>
-                                                    <a href="?act=EditCauHoi&id=<?= $ch['id'] ?>"><input type="button" value="Sửa"></a>
-                                                    <a onclick="return confirm('Bạn Có Muốn Xóa Không')" href="?act=DeleteCauHoi&id=<?= $ch['id'] ?>"><input type="button" value="Xóa"></a>
+                                                    <select name="idCauHoi">
+                                                        <?php foreach ($dsch_ctdt as $ch) : ?>
+                                                            <?php
+                                                            // Kiểm tra xem câu hỏi đã có trong chi tiết đề thi chưa
+                                                            $isQuestionInDetail = false;
+                                                            foreach ($dsct_DeThi as $detail) {
+                                                                if ($detail['idCauHoi'] == $ch['idCauHoi']) {
+                                                                    $isQuestionInDetail = true;
+                                                                    break; // Nếu đã tìm thấy, thoát khỏi vòng lặp
+                                                                }
+                                                            }
+
+                                                            // Nếu câu hỏi chưa có trong chi tiết đề thi, hiển thị nó trong dropdown
+                                                            if (!$isQuestionInDetail) {
+                                                            ?>
+                                                                <option value="<?= $ch['idCauHoi'] ?>"><?= $ch['noiDung'] ?></option>
+                                                            <?php } ?>
+                                                        <?php endforeach ?>
+                                                    </select>
                                                 </td>
                                             </tr>
-                                        <?php endforeach ?>
-
-
+                                            <?php
+                                            if (isset($thongBao) && ($thongBao != "")) {
+                                                echo $thongBao;
+                                            }
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    <input type="submit" name="AddCauHoiChiTietDeThi" value="Thêm">
+                                                    <a href="?act=ChiTietDeThi&id=<?= $_GET['idDethi'] ?>">ChiTietDeThi</a>
+                                                </td>
+                                            </tr>
+                                        </form>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+
                     </div>
+                    <!-- /.container-fluid -->
 
                 </div>
-                <!-- /.container-fluid -->
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="../assets/js/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="../assets/js/sb-admin-2.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="../assets/js/jquery.easing.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="../assets/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
-    <script src="../assets/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="../assets/js/jquery.dataTables.min.js"></script>
+        <script src="../assets/js/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="../assets/js/datatables-demo.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="../assets/js/datatables-demo.js"></script>
 </body>
 
 </html>

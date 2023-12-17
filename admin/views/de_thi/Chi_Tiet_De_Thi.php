@@ -247,6 +247,7 @@
                                             <!-- <th>Tên Đề Thi</th> -->
                                             <th>Tên Câu Hỏi</th>
                                             <th>Đáp Án</th>
+                                            <th>Câu Trả Lời Đúng</th>
                                             <th>Thao Tác</th>
                                         </tr>
                                     </thead>
@@ -255,18 +256,43 @@
                                             <tr>
                                                 <td><?= $ctdt['id'] ?></td>
                                                 <td><?= $ctdt['tenCauHoi'] ?></td>
-                                                
-                                                <td>
-                                                    
-                                                    <?php $danhSachDapAn = explode(',', $ctdt['tenDapAn']); ?> // Chuyển chuỗi thành mảng
 
-                                                    <?php foreach ($danhSachDapAn as $dapAn) : ?>
-                                                        <span><?= $dapAn ?></span><br>
+                                                <td>
+                                                    <?php
+                                                    $danhSachDapAn = explode(',', $ctdt['tenDapAn']);
+                                                    $danhSachDapAnDung = array_map('intval', explode(',', $ctdt['laDapAnDung']));
+
+                                                    foreach ($danhSachDapAn as $index => $dapAn) : ?>
+                                                        <?php
+                                                        // Kiểm tra giá trị của $danhSachDapAnDung tại vị trí tương ứng
+                                                        $isDapAnDung = isset($danhSachDapAnDung[$index]) && $danhSachDapAnDung[$index] === 1;
+
+                                                        // Xác định màu sắc
+                                                        $color = $isDapAnDung ? 'green' : 'red';
+                                                        ?>
+
+                                                        <span style="color: <?= $color; ?>;"><?= $dapAn ?></span><br>
                                                     <?php endforeach ?>
                                                 </td>
                                                 <td>
-                                                    <a href="<?= $adminAction ?>UpdateDapAn"><input type="button" value="Sửa"></a>
-                                                    <input type="button" value="Xóa">
+                                                    <?php
+                                                    // Hiển thị số lượng đáp án đúng nếu có
+                                                    $danhSachDapAnDung = explode(',', $ctdt['laDapAnDung']);
+
+                                                    // Đếm số lượng giá trị "1" trong mảng
+                                                    $soluongDapAnDung = array_count_values($danhSachDapAnDung)['1'];
+
+                                                    // Hiển thị số lượng đáp án đúng nếu có
+                                                    if ($soluongDapAnDung > 0) {
+                                                        echo '<strong>Số lượng đáp án đúng:</strong> ' . $soluongDapAnDung;
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php if ($sl_CahHoi < 10) : ?>
+                                                        <a href="?act=AddCauHoiChiTietDeThi&id=<?= $ctdt['idChuyenDe'] ?>&&idDethi=<?= $_GET['id'] ?>"><input type="button" value="Thêm Câu hỏi"></a>
+                                                    <?php endif ?>
+                                                    <a href="?act=DeleteChiTietDeThi&iddt=<?= $_GET['id'] ?>&&id=<?= $ctdt['idCauHoi'] ?>" onclick="confirm('Bạn có muốn xóa không')"><input type="button" value="Xóa"></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>

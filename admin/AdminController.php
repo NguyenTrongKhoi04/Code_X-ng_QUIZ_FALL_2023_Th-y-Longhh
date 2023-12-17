@@ -143,7 +143,16 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             }
             include_once 'views/chuyen_de/Update_Chuyen_De.php';
             break;
-    /**
+        case 'DeleteChuyenDe':
+            if(isset($_GET['id'])&& ($_GET['id']>0)) {
+                $id = $_GET['id'];
+                delete_ChuyenDe($id);
+            }
+            $allChuyenDe = loadAll_ChuyenDe();
+
+            include_once 'views/chuyen_de/Ngan_Hang_Chuyen_De.php';
+            break;
+    /**     
         * ====================================================================================
         *                                 CÂU HỎI                   
         * ====================================================================================
@@ -206,6 +215,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $id = $_GET['id'];
                 delete_CauHoi($id);
+                // var_dump(delete_CauHoi($id));
+                // die;
             }
             $dsch = loadAll_CauHoi();
             // $cauHoi = loadOne_CauHoiChuaDapAn();
@@ -395,7 +406,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         case 'ChiTietDeThi':
             if(isset($_GET['id']) && ($_GET['id'] > 0)){
                 $id = $_GET['id'];
-                $dsct_DeThi = load_ChiTietDeThi($id);
+                $dsct_DeThi = loadAll_ChiTietDeThi($id);
+                $sl_CahHoi = dem_SoLuongCauHoi_ChiTietDeThi($id);
                 echo "<pre>";
                 print_r($dsct_DeThi);
                 echo "</pre>";
@@ -413,6 +425,37 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
         case 'AddDeThi':
             include_once 'views/de_thi/Add_De_Thi.php';
+            break;
+        
+        case 'AddCauHoiChiTietDeThi':
+            if(isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $idChuyenDe = $_GET['id'];
+                $dsch_ctdt  = loadAll_CauHoiChiTietDeThi($idChuyenDe);
+                $id = $_GET['idDethi'];
+                $kq = loadOne_ChiTietDeThi($id);
+                $dsct_DeThi = loadAll_ChiTietDeThi($id);
+            }
+            if(isset($_POST['AddCauHoiChiTietDeThi']) && ($_POST['AddCauHoiChiTietDeThi'])) {
+                $idCauHoi = $_POST['idCauHoi'];
+                $idDeThi = $_POST['idDeThi'];
+               
+                add_CauHoiChiTietDeThi($idDeThi, $idCauHoi);
+                $thongBao = "<div style='color:green'>Thêm Thành Công</div>";
+                header('location: ?act=ListDeThi');
+            }
+            
+            include 'views/de_thi/Add_CahHoi_ChiTietDeThi.php';
+            break;
+        case 'DeleteChiTietDeThi':
+            if(isset($_GET['iddt']) && isset($_GET['id'])) {
+                $idDeThi = $_GET['iddt'];
+                $id = $_GET['id'];
+
+                delete_CauHoi_ChiTietDeThi($idDeThi, $id);
+            }
+            header('location: ?act=ListDeThi');
+            
+            include "views/de_thi/Chi_Tiet_De_Thi.php";
             break;
         default:
             $allChuyenDe = loadAll_ChuyenDe();
