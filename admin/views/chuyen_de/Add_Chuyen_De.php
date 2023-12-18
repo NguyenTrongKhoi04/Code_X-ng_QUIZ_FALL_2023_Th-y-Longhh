@@ -262,23 +262,18 @@
                                            <th>Thông tin</th>
                                            <th></th>
                                    </tr>
+                
+                                
                                    <tbody>                
-                                       <form method="POST">
+                                       <form action="AdminController.php?act=AddChuyenDe" method="POST">
                                            <tr>
                                                <td>Tên Chuyên Đề</td>
-                                               <td><input type="text" name="tenChuyenDe"></td> 
-                                           </tr>
-                                           <tr>
-                                               <td>Bộ Câu Hỏi</td>
-                                               <td><input type="text" name="boCauHoi"></td>                                                  
-                                           </tr>
-                                           <tr>
-                                               <td>Bộ Đáp Án</td>
-                                               <td><input type="text" name="boDapAn"></td>                                                 
-                                           </tr>                                               
+                                               <td><input type="text" name="tenchuyende"></td> 
+                                           </tr>                                  
                                            <tr>
                                                <td>
-                                                   <button type="submit" name="addChuyenDe">Gửi thông tin đến server</button>
+                                                   <input type="submit" value="Thêm">
+                                                   <a href="<?=$adminAction?>NganHangChuyenDe"><input type="button" value="Danh Sách Chuyên Đề"></a>  
                                                </td>
                                            </tr>
                                        </form>                           

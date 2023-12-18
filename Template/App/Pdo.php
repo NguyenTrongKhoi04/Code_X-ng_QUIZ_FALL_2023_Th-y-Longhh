@@ -107,4 +107,4 @@ function pdo_query_value($sql){
     finally{
         unset($conn);
     }
-} -->
+} 

@@ -253,7 +253,7 @@
 
 
                                     <tbody>
-                                        <form action="<?= $adminAction ?>UpdateAccount&id=<?=$arrAccount['id']?>?>" method="POST" enctype="multipart/form-data">
+                                        <form action="<?= $adminAction ?>UpdateAccount&id=<?=$arrAccount['id']?>" method="POST" enctype="multipart/form-data">
                                             <tr>
                                                 <th>Tên Đăng Nhập</th>
 

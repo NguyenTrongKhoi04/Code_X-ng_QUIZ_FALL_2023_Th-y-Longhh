@@ -231,124 +231,113 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Thêm Đáp Án</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Chi Tiết Đề Thi</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <tr>
-                                        <th></th>
-                                        <th>Thông tin</th>
-                                        <th></th>
-                                    </tr>
-
-
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <!-- <th>Tên Đề Thi</th> -->
+                                            <th>Tên Câu Hỏi</th>
+                                            <th>Đáp Án</th>
+                                            <th>Thao Tác</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
-                                        <form action="?act=AddDapAn" method="post" enctype="multipart/form-data">
+                                        <?php foreach ($dsct_DeThi as $ctdt) : ?>
                                             <tr>
-                                                <th>Câu Hỏi</th>
+                                                <td><?= $ctdt['id'] ?></td>
+                                                <td><?= $ctdt['tenCauHoi'] ?></td>
+                                                
                                                 <td>
-                                                    <select name="cauHoiId" id="">
-                                                        <?php foreach ($dsch as $ch) : ?>
-                                                            <option value="<?= $ch['id'] ?>"><?= $ch['noiDung'] ?></option>
-                                                        <?php endforeach ?>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Nội Dung</th>
-                                                <td><input type="text" name="noiDung"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Hình Ảnh</th>
-                                                <td><input type="file" name="hinhAnh"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Đáp Án Đúng</th>
-                                                <td><input type="number" min="0" name="laDapAnDung"></td>
-                                            </tr>
-                                            <?php
-                                            if (isset($thongBao) && $thongBao != "") {
-                                                echo $thongBao;
-                                            }
+                                                    
+                                                    <?php $danhSachDapAn = explode(',', $ctdt['tenDapAn']); ?> // Chuyển chuỗi thành mảng
 
-                                            ?>
-                                            <tr>
+                                                    <?php foreach ($danhSachDapAn as $dapAn) : ?>
+                                                        <span><?= $dapAn ?></span><br>
+                                                    <?php endforeach ?>
+                                                </td>
                                                 <td>
-                                                    <input type="submit" name="AddDapAn" value="Cập Nhập">
-                                                    <a href="?act=NganHangDapAn">Ngan Hang Dap An</a>
+                                                    <a href="<?= $adminAction ?>UpdateDapAn"><input type="button" value="Sửa"></a>
+                                                    <input type="button" value="Xóa">
                                                 </td>
                                             </tr>
-                                        </form>
+                                        <?php endforeach ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
                     </div>
-                    <!-- /.container-fluid -->
 
                 </div>
-                <!-- End of Main Content -->
-
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
+                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Page Wrapper -->
+        <!-- End of Content Wrapper -->
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
+    </div>
+    <!-- End of Page Wrapper -->
 
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="../assets/js/jquery.min.js"></script>
-        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="../assets/js/jquery.easing.min.js"></script>
-        <!-- Custom scripts for all pages-->
-        <script src="../assets/js/sb-admin-2.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="../assets/js/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../assets/js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="../assets/js/jquery.dataTables.min.js"></script>
-        <script src="../assets/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="../assets/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/dataTables.bootstrap4.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="../assets/js/datatables-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="../assets/js/datatables-demo.js"></script>
 </body>
 
 </html>

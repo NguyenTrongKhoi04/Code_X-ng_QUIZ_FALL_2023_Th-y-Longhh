@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nộp bài sớm</title>
+</head>
+<body>
+
+    <form id="assignmentForm">
+        <label for="earlySubmission">Nộp bài sớm</label>
+        <input type="checkbox" id="earlySubmission" onclick="enableSubmit()">
+        <br>
+        <button type="button" id="submitBtn" onclick="submitAssignment()" disabled>Nộp bài</button>
+    </form>
+
+    <script>
+        function enableSubmit() {
+            var earlySubmissionCheckbox = document.getElementById("earlySubmission");
+            var submitBtn = document.getElementById("submitBtn");
+
+            // Kiểm tra xem ô checkbox đã được chọn chưa
+            if (earlySubmissionCheckbox.checked) {
+                // Gỡ bỏ thuộc tính disable nếu chọn checkbox
+                submitBtn.removeAttribute("disabled");
+            } else {
+                // Nếu không chọn checkbox, đặt lại thuộc tính disable
+                submitBtn.setAttribute("disabled", "disabled");
+            }
+        }
+
+        function submitAssignment() {
+            var earlySubmissionCheckbox = document.getElementById("earlySubmission");
+
+            // Kiểm tra xem ô checkbox đã được chọn chưa
+            if (earlySubmissionCheckbox.checked) {
+                // Nếu đã chọn checkbox, kiểm tra thời gian làm bài
+                var confirmSubmit = confirm("Thời gian làm bài vẫn còn, bạn chắc chắn muốn nộp?");
+                if (confirmSubmit) {
+                    // Xử lý khi người dùng chấp nhận nộp bài
+                    // Đặt các hành động cần thực hiện khi nộp bài ở đây
+                    alert("Bài của bạn đã được nộp!");
+                }
+            } else {
+                // Nếu không chọn checkbox, xử lý nộp bài như thông thường
+                // Đặt các hành động cần thực hiện khi nộp bài ở đây
+                alert("Bài của bạn đã được nộp!");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+

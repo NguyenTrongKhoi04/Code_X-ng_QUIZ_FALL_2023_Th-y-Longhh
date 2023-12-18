@@ -247,32 +247,33 @@
                 
                                                         
                                    <tbody>                
-                                   <form action="">
+                                   <form action="?act=UpdateLichThi" method="POST">
                                             <tr>
                                                 <th>Thời Gian Bắt Đầu</th>
-
-                                                <td><input type="text"></td>
+                                                      <input type="hidden" name="id" value="<?= $kq['id']?>">  
+                                                <td><input type="datetime-local" name="thoiGianBatDau" value="<?= $kq['thoiGianBatDau']?>"></td>
 
                                             </tr>
                                             <tr>
                                                 <th>Thời Gian Kết Thúc</th>
 
-                                                <td><input type="text"></td>
+                                                <td><input type="datetime-local" name="thoiGianKetThuc" value="<?= $kq['thoiGianKetThuc']?>"></td>
                                             </tr>
                                             <tr>
                                                 <th>Thời Gian Thi</th>
 
-                                                <td><input type="file"></td>
+                                                <td><input type="number" min="0" name="thoiGianThi" value="<?= $kq['thoiGianThi']?>"></td>
                                             </tr>
                                             <tr>
                                                 <th>Số Lượng Đề Thi</th>
 
-                                                <td><input type="text"></td>
+                                                <td><input type="number" min="0" name="soLuongDeThi" value="<?= $kq['soLuongDeThi']?>"></td>
                                             </tr>
 
                                             <tr>
                                                 <td>
-                                                    <input type="button" value="Update">
+                                                    <input type="submit"  name="UpdateLichThi" value="Cập nhập">
+                                                    <a href="?act=ListLichThi">Danh sách lịch</a>
                                                 </td>
                                             </tr>
                                         </form>                    

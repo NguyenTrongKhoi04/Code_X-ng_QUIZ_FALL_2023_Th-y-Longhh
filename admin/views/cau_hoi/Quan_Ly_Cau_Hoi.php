@@ -231,57 +231,67 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Thêm Đáp Án</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Quản Lý Câu Hỏi</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
                                     <tr>
                                         <th></th>
-                                        <th>Thông tin</th>
+                                        <th><h3>Được tích là đáp án đúng</h3></th>
                                         <th></th>
                                     </tr>
 
 
                                     <tbody>
-                                        <form action="?act=AddDapAn" method="post" enctype="multipart/form-data">
-                                            <tr>
-                                                <th>Câu Hỏi</th>
-                                                <td>
-                                                    <select name="cauHoiId" id="">
-                                                        <?php foreach ($dsch as $ch) : ?>
-                                                            <option value="<?= $ch['id'] ?>"><?= $ch['noiDung'] ?></option>
-                                                        <?php endforeach ?>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Nội Dung</th>
-                                                <td><input type="text" name="noiDung"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Hình Ảnh</th>
-                                                <td><input type="file" name="hinhAnh"></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Đáp Án Đúng</th>
-                                                <td><input type="number" min="0" name="laDapAnDung"></td>
-                                            </tr>
-                                            <?php
-                                            if (isset($thongBao) && $thongBao != "") {
-                                                echo $thongBao;
-                                            }
+                                        <form action="?act=laDapAnDung" method="post" enctype="multipart/form-data">
 
+                                            <?php
+                                                $daHienThi = []; // Mảng để theo dõi câu hỏi đã hiển thị
+
+                                                foreach ($qlch as $ch) :
+                                                    // Kiểm tra xem câu hỏi đã được hiển thị chưa
+                                                    if (!in_array($ch['noiDung'], $daHienThi)) :
+                                                        $daHienThi[] = $ch['noiDung']; // Thêm câu hỏi vào mảng đã hiển thị
                                             ?>
-                                            <tr>
-                                                <td>
-                                                    <input type="submit" name="AddDapAn" value="Cập Nhập">
-                                                    <a href="?act=NganHangDapAn">Ngan Hang Dap An</a>
-                                                </td>
-                                            </tr>
+                                                    <div>Câu hỏi: <?= $ch['noiDung'] ?></div> <br>
+                                                <?php endif ?>
+                                            <?php endforeach ?>
+
+                                            <?php foreach ($qlch as $ch) { 
+                                
+                                            ?>
+                                                <div>
+                                                   
+                                                    <input type="checkbox" <?= ($ch['laDapAnDung'] === 1) ? 'checked': '' ?> name="dapAnDung[]" value='<?= $ch['dapAnId'] ?>' id="dapAn<?= $ch['dapAnId'] ?>">
+                                                    <label for="dapAn<?= $ch['dapAnId'] ?>"><?= $ch['noiDungDapAn'] ?></label>
+
+                                                </div>
+                                            <?php }?>
+
+                                            <?php
+                                                if(isset($qlch)) {
+                                                    foreach ($qlch as $ch) {
+                                                        extract($ch);
+                                                    }
+                                                }
+                                            ?>
+                                            
+
+                                            <input type="submit" name="chonDapAnDung" value="Gửi">
+                                            <div class="btn" onclick="hienAnInput()">Thêm Đáp Án</div>
                                         </form>
+                                        <div id="themDapAnDiv" style="display: none;">
+                                        <form action="?act=ThemDapAnMoi&id=<?= $cauHoiId?>" method="post">
+                                            <input type="hidden" name="cauHoiId" value="<?= $cauHoiId ?>">
+                                            <input type="text" name="noiDung" id="noiDungInput">
+                                            <input type="submit" name="addDapAnQuanLyCauHoi" value="Thêm đáp án"> <br><br>
+                                        </form>
+                                            </div>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -349,6 +359,7 @@
 
         <!-- Page level custom scripts -->
         <script src="../assets/js/datatables-demo.js"></script>
+        <script src="../assets/js//quanlydapan.js"></script>
 </body>
 
 </html>
